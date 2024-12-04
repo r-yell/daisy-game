@@ -1,17 +1,19 @@
 import { getDOMElements } from '../js/domElements.js';
 import { updateLockedThumbnails } from '../js/utils.js';
 
-// Export the topImages object
+// Object containing all top clothing items with their properties
 export const topImages = {
     'jersey-tee': {
         colors: {
             'cream': {
                 thumb: 'jersey-tee-cream_thumb.png',
                 fullSize: [
+                    // Front view of the garment, appears above most other clothing
                     { src: 'tops-full-size/jersey-tee-cream.png', 
                       zIndex: 15,
                       type: 'front' },
 
+                    // Back view, appears behind other clothing
                     { src: 'tops-full-size/jersey-tee-back-cream.png',
                       zIndex: 2,
                       type: 'back' }
@@ -56,7 +58,8 @@ export const topImages = {
         },
         defaultColor: 'cream',
         layeringRules: {
-            incompatibleWith: ['sweater', 'stripe-tank', 'butterfly-tee', 'knit-sweater'] 
+            // List of items that cannot be worn simultaneously with this item
+            incompatibleWith: ['sweater', 'stripe-tank', 'butterfly-tee', 'knit-sweater', 'cape', 'tulle-skirt'] 
         }
     },
 
@@ -159,7 +162,7 @@ export const topImages = {
         },
         defaultColor: 'honey',
         layeringRules: {
-            incompatibleWith: ['knit-sweater', 'butterfly-tee', 'stripe-tank', 'jersey-tee'] // Cannot be worn with sweater
+            incompatibleWith: ['knit-sweater', 'butterfly-tee', 'stripe-tank', 'jersey-tee', 'cape', 'tulle-skirt'] 
         }
     },
 
@@ -182,7 +185,7 @@ export const topImages = {
         },
         defaultColor: 'charc',
         layeringRules: {
-            incompatibleWith: ['jersey-tee', 'stripe-tank', 'sweater', 'knit-sweater', 'ruffle-shirt']
+            incompatibleWith: ['jersey-tee', 'stripe-tank', 'sweater', 'knit-sweater', 'ruffle-shirt', 'cape']
         }
     },
 
@@ -211,7 +214,7 @@ export const topImages = {
         },
         defaultColor: 'brown',
         layeringRules: {
-            incompatibleWith: ['sweater', 'jersey-tee', 'butterfly-tee', 'stripe-tank'] // Cannot be worn with sweater
+            incompatibleWith: ['sweater', 'jersey-tee', 'butterfly-tee', 'stripe-tank', 'cape'] 
         }
     }
 };
@@ -220,23 +223,29 @@ export const topImages = {
 export function loadTops() {
     const DOM = getDOMElements();
     
+    // Clear existing grid before loading new items
     DOM.clothesGrid.innerHTML = '';
     
+    // Iterate through each clothing item and create its thumbnail
     Object.entries(topImages).forEach(([itemName, itemData]) => {
         const thumbContainer = document.createElement('div');
         thumbContainer.className = 'thumb-container';
         
+        // Create and configure the thumbnail image
         const img = document.createElement('img');
         img.src = `images/clothes/tops/${itemData.colors[itemData.defaultColor].thumb}`;
         img.alt = `${itemName}-${itemData.defaultColor}`;
         img.className = 'thumb';
         img.dataset.garmentName = itemName;
         
+        // Handle thumbnail click events
         img.addEventListener('click', () => {
+            // Prevent interaction if thumbnail is locked
             if (img.classList.contains('locked-thumb')) {
-                return; // Do nothing if the thumbnail is locked
+                return;
             }
 
+            // Handle deselection of currently worn item
             if (img.classList.contains('selected-thumb')) {
                 img.classList.remove('selected-thumb');
                 
@@ -260,7 +269,7 @@ export function loadTops() {
                 return;
             }
             
-            // Check if this item is compatible with currently worn items
+            // Check compatibility with currently worn items
             const existingClothes = Array.from(DOM.daisyContainer.querySelectorAll('.clothes-img'));
             const existingItems = new Set(existingClothes.map(img => img.dataset.itemName));
             
@@ -271,6 +280,7 @@ export function loadTops() {
                 return;
             }
             
+            // Add selected item to character
             img.classList.add('selected-thumb');
             
             // Add the garment to the daisyContainer
@@ -289,6 +299,7 @@ export function loadTops() {
             updateLockedThumbnails();
         });
         
+        // Add color switcher if item has multiple colors
         if (Object.keys(itemData.colors).length > 1) {
             const colorSwitcher = document.createElement('div');
             colorSwitcher.className = 'color-switcher';
@@ -301,7 +312,7 @@ export function loadTops() {
                 
                 colorBtn.addEventListener('click', () => {
                     if (colorBtn.classList.contains('locked-color-btn')) {
-                        return; // Do nothing if the color button is locked
+                        return;
                     }
 
                     if (!img.classList.contains('selected-thumb')) {
@@ -325,6 +336,9 @@ export function loadTops() {
                         fullSizeClothesImg.dataset.type = imageData.type;
                         DOM.daisyContainer.appendChild(fullSizeClothesImg);
                     });
+
+                    // Add this line to update locked thumbnails after color change
+                    updateLockedThumbnails();
                 });
                 
                 colorSwitcher.appendChild(colorBtn);

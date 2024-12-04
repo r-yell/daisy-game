@@ -2,7 +2,124 @@ import { getDOMElements } from '../js/domElements.js';
 import { updateLockedThumbnails } from '../js/utils.js';
 
 export const bottomImages = {
-    // ... existing object ...
+    'tulle-skirt': {
+        colors: {
+            'pink': {
+                thumb: 'tulle-skirt-pink_thumb.png',
+                fullSize: [
+                    { src: 'bottoms-full-size/tulle-skirt-pink.png', 
+                      zIndex: 13 }
+                ]
+            },
+            'black': {
+                thumb: 'tulle-skirt-black_thumb.png',
+                fullSize: [
+                    { src: 'bottoms-full-size/tulle-skirt-black.png', 
+                      zIndex: 13 }
+                ]
+            }
+        },
+        defaultColor: 'pink',
+        layeringRules: {
+            incompatibleWith: ['sweater', 'cape', 'jersey-tee']
+        }
+    },
+
+    'flares': {
+        colors: {
+            'denim': {
+                thumb: 'flares-denim_thumb.png',
+                fullSize: [
+                    { src: 'bottoms-full-size/flares-denim.png', 
+                      zIndex: 11 }
+                ]
+            }
+        },
+        defaultColor: 'denim',
+        layeringRules: {
+            incompatibleWith: ['print-flares', 'long-shorts', 'cape']
+        }
+    },
+
+    'print-flares': {
+        colors: {
+            'pink': {
+                thumb: 'print-flares-pink_thumb.png',
+                fullSize: [
+                    { src: 'bottoms-full-size/print-flares-pink.png', 
+                      zIndex: 11 }
+                ]
+            },
+
+            'purple': {
+                thumb: 'print-flares-purple_thumb.png',
+                fullSize: [
+                    { src: 'bottoms-full-size/print-flares-purple.png', 
+                      zIndex: 11 }
+                ]
+            },
+
+            'blue': {
+                thumb: 'print-flares-blue_thumb.png',
+                fullSize: [
+                    { src: 'bottoms-full-size/print-flares-blue.png', 
+                      zIndex: 11 }
+                ]
+            }   
+        },
+        defaultColor: 'pink',
+        layeringRules: {
+            incompatibleWith: ['flares', 'long-shorts', 'cape']
+        }
+    },
+
+    'long-shorts': {
+        colors: {
+            'denim': {
+                thumb: 'long-shorts-denim_thumb.png',
+                fullSize: [
+                    { src: 'bottoms-full-size/long-shorts-denim.png', 
+                      zIndex: 11 }
+                ]
+            },
+
+            'blue': {
+                thumb: 'long-shorts-blue_thumb.png',
+                fullSize: [
+                    { src: 'bottoms-full-size/long-shorts-blue.png', 
+                      zIndex: 11 }
+                ]
+            }
+        },
+        defaultColor: 'denim',
+        layeringRules: {
+            incompatibleWith: ['print-flares', 'flares', 'animal-print-skirt', 'cape']
+        }
+    },
+
+    'animal-print-skirt': {
+        colors: {
+            'pink': {
+                thumb: 'animal-print-skirt-pink_thumb.png',
+                fullSize: [
+                    { src: 'bottoms-full-size/animal-print-skirt-pink.png', 
+                      zIndex: 12 }
+                ]
+            },
+
+            'brown': {
+                thumb: 'animal-print-skirt-brown_thumb.png',
+                fullSize: [
+                    { src: 'bottoms-full-size/animal-print-skirt-brown.png', 
+                      zIndex: 12 }
+                ]
+            }
+        },
+        defaultColor: 'pink',
+        layeringRules: {
+            incompatibleWith: ['long-shorts', 'cape']
+        }
+    }
 };
 
 export function loadBottoms() {
@@ -107,6 +224,8 @@ export function loadBottoms() {
                         fullSizeClothesImg.dataset.type = imageData.type;
                         DOM.daisyContainer.appendChild(fullSizeClothesImg);
                     });
+
+                    updateLockedThumbnails();
                 });
                 
                 colorSwitcher.appendChild(colorBtn);

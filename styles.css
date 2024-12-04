@@ -41,6 +41,11 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+
+.clothes-btn:hover {
+    background-color: rgba(214, 200, 188, 0.1);
 }
 
 .left-nav {
@@ -86,6 +91,10 @@ main {
 
 .daisy-img {
     z-index: 5;
+}
+
+#bodysuit-img {
+    z-index: 8;
 }
 
 .capture-btn {

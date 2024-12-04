@@ -4,6 +4,7 @@ import { bottomImages, loadBottoms } from './js/bottoms.js';
 import { fullBodyImages, loadFullBody } from './js/fullBody.js';
 import { shoeImages, loadShoes } from './js/shoes.js';
 import { accessoryImages, loadAccessories } from './js/accessories.js';
+import { updateLockedThumbnails } from './js/utils.js';
 
 // Initialize screenshots array in localStorage if it doesn't exist
 if (!localStorage.getItem('screenshots')) {
@@ -50,53 +51,62 @@ function loadAlbum() {
     const DOM = getDOMElements();
     DOM.albumGrid.innerHTML = ''; // Clear existing thumbnails
     
-    // Get screenshots from localStorage
-    const screenshots = JSON.parse(localStorage.getItem('screenshots'));
+    // Get screenshots from localStorage and ensure it's an array
+    const screenshots = JSON.parse(localStorage.getItem('screenshots')) || [];
     
-    screenshots.forEach(screenshot => {
-        const thumbContainer = document.createElement('div');
-        thumbContainer.className = 'album-thumb-container';
-        
-        // Create delete button
-        const deleteBtn = document.createElement('button');
-        deleteBtn.className = 'album-delete-btn';
-        deleteBtn.innerHTML = '×';
-        deleteBtn.title = 'Delete outfit';
-        
-        // Add delete functionality
-        deleteBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent thumbnail click when clicking delete
+    // Only proceed with forEach if there are screenshots
+    if (screenshots.length === 0) {
+        // Optional: Add a message when there are no screenshots
+        const emptyMessage = document.createElement('p');
+        emptyMessage.textContent = 'No outfits saved yet!';
+        emptyMessage.style.textAlign = 'center';
+        DOM.albumGrid.appendChild(emptyMessage);
+    } else {
+        screenshots.forEach(screenshot => {
+            const thumbContainer = document.createElement('div');
+            thumbContainer.className = 'album-thumb-container';
             
-            // Confirm deletion
-            const confirmDelete = confirm('Are you sure you want to delete this screenshot?');
-            if (!confirmDelete) {
-                return; // Exit if user cancels
-            }
+            // Create delete button
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'album-delete-btn';
+            deleteBtn.innerHTML = '×';
+            deleteBtn.title = 'Delete outfit';
             
-            // Filter out this screenshot
-            const updatedScreenshots = screenshots.filter(s => s.id !== screenshot.id);
+            // Add delete functionality
+            deleteBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent thumbnail click when clicking delete
+                
+                // Confirm deletion
+                const confirmDelete = confirm('Are you sure you want to delete this screenshot?');
+                if (!confirmDelete) {
+                    return; // Exit if user cancels
+                }
+                
+                // Filter out this screenshot
+                const updatedScreenshots = screenshots.filter(s => s.id !== screenshot.id);
+                
+                // Save back to localStorage
+                localStorage.setItem('screenshots', JSON.stringify(updatedScreenshots));
+                
+                // Remove the thumbnail container from display
+                thumbContainer.remove();
+            });
             
-            // Save back to localStorage
-            localStorage.setItem('screenshots', JSON.stringify(updatedScreenshots));
+            const thumb = document.createElement('img');
+            thumb.src = screenshot.url;
+            thumb.className = 'album-thumb';
             
-            // Remove the thumbnail container from display
-            thumbContainer.remove();
+            // Add click handler for fullscreen view
+            thumb.addEventListener('click', () => {
+                DOM.fullscreenImg.src = screenshot.url;
+                DOM.fullscreenView.style.display = 'flex';
+            });
+            
+            thumbContainer.appendChild(thumb);
+            thumbContainer.appendChild(deleteBtn);
+            DOM.albumGrid.appendChild(thumbContainer);
         });
-        
-        const thumb = document.createElement('img');
-        thumb.src = screenshot.url;
-        thumb.className = 'album-thumb';
-        
-        // Add click handler for fullscreen view
-        thumb.addEventListener('click', () => {
-            DOM.fullscreenImg.src = screenshot.url;
-            DOM.fullscreenView.style.display = 'flex';
-        });
-        
-        thumbContainer.appendChild(thumb);
-        thumbContainer.appendChild(deleteBtn);
-        DOM.albumGrid.appendChild(thumbContainer);
-    });
+    }
     
     DOM.albumPopup.style.display = 'flex';
 }
@@ -108,11 +118,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const DOM = getDOMElements();
 
     // Add event listeners
-    document.getElementById('tops-btn').addEventListener('click', loadTops);
-    document.getElementById('bottoms-btn').addEventListener('click', loadBottoms);
-    document.getElementById('full-body-btn').addEventListener('click', loadFullBody);
-    document.getElementById('shoes-btn').addEventListener('click', loadShoes);
-    document.getElementById('accessories-btn').addEventListener('click', loadAccessories);
+    document.getElementById('tops-btn').addEventListener('click', () => {
+        loadTops();
+        updateLockedThumbnails();
+    });
+    
+    document.getElementById('bottoms-btn').addEventListener('click', () => {
+        loadBottoms();
+        updateLockedThumbnails();
+    });
+    
+    document.getElementById('full-body-btn').addEventListener('click', () => {
+        loadFullBody();
+        updateLockedThumbnails();
+    });
+    
+    document.getElementById('shoes-btn').addEventListener('click', () => {
+        loadShoes();
+        updateLockedThumbnails();
+    });
+    
+    document.getElementById('accessories-btn').addEventListener('click', () => {
+        loadAccessories();
+        updateLockedThumbnails();
+    });
     
     DOM.captureBtn.addEventListener('click', takeScreenshot);
     DOM.resetButton.addEventListener('click', reset);
@@ -126,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load tops after DOM is ready and elements are initialized
     loadTops();
+    updateLockedThumbnails();
 });
 
 // Close popups when clicking outside
