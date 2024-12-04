@@ -1,0 +1,285 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: .5px solid rgba(255, 0, 0, 0.3); */
+}
+
+h1 {
+    text-align: center;
+    padding: 20px 0;
+}   
+
+main {
+    width: 1200px;
+    height: 850px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #fef4e9;
+}
+
+.content-container {
+    display: flex;
+    width: 1036px;
+}
+
+.clothes-nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.clothes-btn {
+    width: 130px;
+    height: 46px;
+    border: 1px solid rgb(214, 200, 188);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-nav {
+    height: 550px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.background-btn {
+    width: 33px;
+    height: 100px;
+    border: 1px solid rgb(214, 200, 188);
+    writing-mode: vertical-rl;
+    font-size: .7rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.album-btn {
+    width: 33px;
+    height: 100px;
+    border: 1px solid rgb(214, 200, 188);
+    writing-mode: vertical-rl;
+    font-size: .7rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.daisy-container {
+    width: 333px;
+    height: 667px;
+    border: 1px solid rgb(214, 200, 188);
+    position: relative;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.daisy-img {
+    z-index: 5;
+}
+
+.capture-btn {
+    position: absolute;
+    top: 615px;
+    left: 10px;
+    border: 1px solid rgb(214, 200, 188);
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.reset-btn {
+    position: absolute;
+    top: 615px;
+    left: 250px;
+    border: 1px solid rgb(214, 200, 188);
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.preview-container {
+    height: 667px;
+    border: 1px solid rgb(214, 200, 188);
+    flex: 1;
+    overflow: scroll;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.daisy-img, .clothes-img {
+    height: 100%;
+    width: auto;
+    position: absolute;
+}
+
+.clothes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.thumb-container {
+    width: 20%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.thumb {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-bottom: 0px;
+    border: 1px solid rgb(214, 200, 188);
+}
+
+.selected-thumb {
+    border: 5px solid rgb(214, 200, 188);
+}
+
+.locked-thumb {
+    filter: brightness(0.5);
+    pointer-events: none;
+}
+
+.color-switcher {
+    display: flex;
+    gap: 5px;
+    padding: 2px;
+}
+
+.color-btn {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(214, 200, 188);
+    cursor: pointer;
+    padding: 0;
+}
+
+.color-btn:hover {
+    transform: scale(1.3);
+}
+
+.daisy-container {
+    position: relative;  /* Required for z-index to work */
+}
+
+.clothes-img {
+    position: absolute;
+    height: 100%;
+    width: auto;
+}
+
+.album-popup, .fullscreen-view {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.album-content, .fullscreen-content {
+    background-color: #fef4e9;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    max-width: 80%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.album-close-btn, .fullscreen-close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.album-thumb-container {
+    cursor: pointer;
+    position: relative;
+}
+
+.album-thumb {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid rgb(214, 200, 188);
+    transition: transform 0.2s;
+}
+
+.album-thumb:hover {
+    transform: scale(1.05);
+}
+
+.fullscreen-img {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.capture-btn {
+    cursor: pointer;
+}
+
+.album-delete-btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    z-index: 2001;
+    transition: transform 0.2s;
+}
+
+.album-delete-btn:hover {
+    transform: scale(1.1);
+    background-color: #ff0000;
+}
+
+.locked-color-btn {
+    filter: brightness(0.5);
+    pointer-events: none;
+}
