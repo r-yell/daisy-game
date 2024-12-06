@@ -8,14 +8,14 @@ export const bottomImages = {
                 thumb: 'tulle-skirt-pink_thumb.png',
                 fullSize: [
                     { src: 'bottoms-full-size/tulle-skirt-pink.png', 
-                      zIndex: 13 }
+                      zIndex: 130 }
                 ]
             },
             'black': {
                 thumb: 'tulle-skirt-black_thumb.png',
                 fullSize: [
                     { src: 'bottoms-full-size/tulle-skirt-black.png', 
-                      zIndex: 13 }
+                      zIndex: 130 }
                 ]
             }
         },
@@ -31,7 +31,7 @@ export const bottomImages = {
                 thumb: 'flares-denim_thumb.png',
                 fullSize: [
                     { src: 'bottoms-full-size/flares-denim.png', 
-                      zIndex: 11 }
+                      zIndex: 110 }
                 ]
             }
         },
@@ -47,7 +47,7 @@ export const bottomImages = {
                 thumb: 'print-flares-pink_thumb.png',
                 fullSize: [
                     { src: 'bottoms-full-size/print-flares-pink.png', 
-                      zIndex: 11 }
+                      zIndex: 110 }
                 ]
             },
 
@@ -55,7 +55,7 @@ export const bottomImages = {
                 thumb: 'print-flares-purple_thumb.png',
                 fullSize: [
                     { src: 'bottoms-full-size/print-flares-purple.png', 
-                      zIndex: 11 }
+                      zIndex: 110 }
                 ]
             },
 
@@ -63,7 +63,7 @@ export const bottomImages = {
                 thumb: 'print-flares-blue_thumb.png',
                 fullSize: [
                     { src: 'bottoms-full-size/print-flares-blue.png', 
-                      zIndex: 11 }
+                      zIndex: 110 }
                 ]
             }   
         },
@@ -79,7 +79,7 @@ export const bottomImages = {
                 thumb: 'long-shorts-denim_thumb.png',
                 fullSize: [
                     { src: 'bottoms-full-size/long-shorts-denim.png', 
-                      zIndex: 11 }
+                      zIndex: 110 }
                 ]
             },
 
@@ -87,7 +87,7 @@ export const bottomImages = {
                 thumb: 'long-shorts-blue_thumb.png',
                 fullSize: [
                     { src: 'bottoms-full-size/long-shorts-blue.png', 
-                      zIndex: 11 }
+                      zIndex: 110 }
                 ]
             }
         },
@@ -103,7 +103,7 @@ export const bottomImages = {
                 thumb: 'animal-print-skirt-pink_thumb.png',
                 fullSize: [
                     { src: 'bottoms-full-size/animal-print-skirt-pink.png', 
-                      zIndex: 12 }
+                      zIndex: 120 }
                 ]
             },
 
@@ -111,7 +111,7 @@ export const bottomImages = {
                 thumb: 'animal-print-skirt-brown_thumb.png',
                 fullSize: [
                     { src: 'bottoms-full-size/animal-print-skirt-brown.png', 
-                      zIndex: 12 }
+                      zIndex: 120 }
                 ]
             }
         },

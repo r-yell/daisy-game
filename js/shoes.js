@@ -8,7 +8,7 @@ export const shoeImages = {
                 thumb: 'leggings-purple_thumb.png',
                 fullSize: [
                     { src: 'shoes-full-size/leggings-purple.png', 
-                      zIndex: 6 }
+                      zIndex: 60 }
                 ]
             },
 
@@ -16,7 +16,7 @@ export const shoeImages = {
                 thumb: 'leggings-white_thumb.png',
                 fullSize: [
                     { src: 'shoes-full-size/leggings-white.png', 
-                      zIndex: 6 }
+                      zIndex: 60 }
                 ]
             }
         },
@@ -32,7 +32,7 @@ export const shoeImages = {
                 thumb: 'loafers-brown_thumb.png',
                 fullSize: [
                     { src: 'shoes-full-size/loafers-brown.png', 
-                      zIndex: 8 }
+                      zIndex: 80 }
                 ]
             }
         },
@@ -49,11 +49,11 @@ export const shoeImages = {
                 thumb: 'mary-janes-black_thumb.png',
                 fullSize: [
                     { src: 'shoes-full-size/mary-janes-black.png', 
-                      zIndex: 8,
+                      zIndex: 80,
                       type: 'front' },
 
                     { src: 'shoes-full-size/mary-janes-back-black.png', 
-                      zIndex: 2,
+                      zIndex: 80,
                       type: 'back' }
                 ]
             }
@@ -71,7 +71,7 @@ export const shoeImages = {
                 thumb: 'ruffle-hem-socks-white_thumb.png',
                 fullSize: [
                     { src: 'shoes-full-size/ruffle-hem-socks-white.png', 
-                      zIndex: 7 }
+                      zIndex: 70 }
                 ]
             },
 
@@ -79,7 +79,7 @@ export const shoeImages = {
                 thumb: 'ruffle-hem-socks-pink_thumb.png',
                 fullSize: [
                     { src: 'shoes-full-size/ruffle-hem-socks-pink.png', 
-                      zIndex: 7 }
+                      zIndex: 70 }
                 ]
             }
         },
@@ -96,7 +96,7 @@ export const shoeImages = {
                 thumb: 'sneakers-black_thumb.png',
                 fullSize: [
                     { src: 'shoes-full-size/sneakers-black.png', 
-                      zIndex: 8 }
+                      zIndex: 80 }
                 ]
             },
 
@@ -104,7 +104,7 @@ export const shoeImages = {
                 thumb: 'sneakers-blue_thumb.png',
                 fullSize: [
                     { src: 'shoes-full-size/sneakers-blue.png', 
-                      zIndex: 8 }
+                      zIndex: 80 }
                 ]
             }
         },
@@ -121,7 +121,7 @@ export const shoeImages = {
                 thumb: 'socks-white_thumb.png',
                 fullSize: [
                     { src: 'shoes-full-size/socks-white.png', 
-                      zIndex: 7 }
+                      zIndex: 70 }
                 ]
             },
 
@@ -129,7 +129,7 @@ export const shoeImages = {
                 thumb: 'socks-purple_thumb.png',
                 fullSize: [
                     { src: 'shoes-full-size/socks-purple.png', 
-                      zIndex: 7 }
+                      zIndex: 70 }
                 ]
             },
 
@@ -137,7 +137,7 @@ export const shoeImages = {
                 thumb: 'socks-blue_thumb.png',
                 fullSize: [
                     { src: 'shoes-full-size/socks-blue.png', 
-                      zIndex: 7 }
+                      zIndex: 70 }
                 ]
             }
         },
@@ -154,7 +154,7 @@ export const shoeImages = {
                 thumb: 'sports-socks-honey_thumb.png',
                 fullSize: [
                     { src: 'shoes-full-size/sports-socks-honey.png', 
-                      zIndex: 7 }
+                      zIndex: 70 }
                 ]
             },
 
@@ -162,7 +162,7 @@ export const shoeImages = {
                 thumb: 'sports-socks-green_thumb.png',
                 fullSize: [
                     { src: 'shoes-full-size/sports-socks-green.png', 
-                      zIndex: 7 }
+                      zIndex: 70 }
                 ]
             },
 
@@ -170,7 +170,7 @@ export const shoeImages = {
                 thumb: 'sports-socks-pink_thumb.png',
                 fullSize: [
                     { src: 'shoes-full-size/sports-socks-pink.png', 
-                      zIndex: 7 }
+                      zIndex: 70 }
                 ]
             }
         },

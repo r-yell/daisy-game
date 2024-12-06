@@ -1,25 +1,29 @@
+/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* Useful for debugging layout issues */
   /* border: .5px solid rgba(255, 0, 0, 0.3); */
 }
 
+/* Typography */
 h1 {
     text-align: center;
     padding: 20px 0;
 }   
 
+/* Layout Containers */
 main {
     width: 1200px;
     height: 850px;
-    border: 1px solid black;
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto; /* Modern way to center horizontally */
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 1px solid black;
     border-radius: 20px;
     background-color: #fef4e9;
 }
@@ -29,6 +33,7 @@ main {
     width: 1036px;
 }
 
+/* Navigation Styles */
 .clothes-nav {
     display: flex;
     justify-content: flex-end;
@@ -37,10 +42,10 @@ main {
 .clothes-btn {
     width: 130px;
     height: 46px;
-    border: 1px solid rgb(214, 200, 188);
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid rgb(214, 200, 188);
     cursor: pointer;
 }
 
@@ -56,18 +61,8 @@ main {
     justify-content: space-between;
 }
 
-.background-btn {
-    width: 33px;
-    height: 100px;
-    border: 1px solid rgb(214, 200, 188);
-    writing-mode: vertical-rl;
-    font-size: .7rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+/* Vertical Button Styles */
+.background-btn,
 .album-btn {
     width: 33px;
     height: 100px;
@@ -80,43 +75,54 @@ main {
     align-items: center;
 }
 
+/* Main Content Area */
 .daisy-container {
     width: 333px;
     height: 667px;
-    border: 1px solid rgb(214, 200, 188);
     position: relative;
+    border: 1px solid rgb(214, 200, 188);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
 
+/* Character and Clothing Images */
 .daisy-img {
-    z-index: 5;
+    z-index: 50;
 }
 
 #bodysuit-img {
-    z-index: 8;
+    z-index: 70;
+}
+
+.daisy-img, 
+.clothes-img {
+    height: 100%;
+    width: auto;
+    position: absolute;
+}
+
+/* Action Buttons */
+.capture-btn,
+.reset-btn {
+    position: absolute;
+    border: 1px solid rgb(214, 200, 188);
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 1000;
 }
 
 .capture-btn {
-    position: absolute;
     top: 615px;
     left: 10px;
-    border: 1px solid rgb(214, 200, 188);
-    padding: 10px;
-    border-radius: 10px;
-    z-index: 1000;
+    cursor: pointer;
 }
 
 .reset-btn {
-    position: absolute;
     top: 615px;
     left: 250px;
-    border: 1px solid rgb(214, 200, 188);
-    padding: 10px;
-    border-radius: 10px;
-    z-index: 1000;
 }
 
+/* Preview Section */
 .preview-container {
     height: 667px;
     border: 1px solid rgb(214, 200, 188);
@@ -126,12 +132,7 @@ main {
     border-bottom-right-radius: 20px;
 }
 
-.daisy-img, .clothes-img {
-    height: 100%;
-    width: auto;
-    position: absolute;
-}
-
+/* Clothes Grid Layout */
 .clothes-grid {
     display: flex;
     flex-wrap: wrap;
@@ -139,8 +140,9 @@ main {
     padding: 5px;
 }
 
+/* Thumbnail Styles */
 .thumb-container {
-    width: 20%;
+    width: 30%;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -153,7 +155,7 @@ main {
     object-fit: contain;
     cursor: pointer;
     border-radius: 20px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     border: 1px solid rgb(214, 200, 188);
 }
 
@@ -166,6 +168,7 @@ main {
     pointer-events: none;
 }
 
+/* Color Switcher Styles */
 .color-switcher {
     display: flex;
     gap: 5px;
@@ -186,30 +189,25 @@ main {
     transform: scale(1.3);
 }
 
-.daisy-container {
-    position: relative;  /* Required for z-index to work */
+.locked-color-btn {
+    filter: brightness(0.5);
+    pointer-events: none;
 }
 
-.clothes-img {
-    position: absolute;
-    height: 100%;
-    width: auto;
-}
-
-.album-popup, .fullscreen-view {
+/* Album and Fullscreen Modal Styles */
+.album-popup, 
+.fullscreen-view {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0; /* Modern way to set all sides to 0 */
     background-color: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
     z-index: 2000;
 }
 
-.album-content, .fullscreen-content {
+.album-content, 
+.fullscreen-content {
     background-color: #fef4e9;
     padding: 20px;
     border-radius: 20px;
@@ -219,7 +217,8 @@ main {
     overflow-y: auto;
 }
 
-.album-close-btn, .fullscreen-close-btn {
+.album-close-btn, 
+.fullscreen-close-btn {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -229,6 +228,7 @@ main {
     cursor: pointer;
 }
 
+/* Album Grid Layout */
 .album-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -260,10 +260,7 @@ main {
     object-fit: contain;
 }
 
-.capture-btn {
-    cursor: pointer;
-}
-
+/* Album Delete Button */
 .album-delete-btn {
     position: absolute;
     top: -10px;
@@ -286,9 +283,4 @@ main {
 .album-delete-btn:hover {
     transform: scale(1.1);
     background-color: #ff0000;
-}
-
-.locked-color-btn {
-    filter: brightness(0.5);
-    pointer-events: none;
 }

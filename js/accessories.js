@@ -8,7 +8,7 @@ export const accessoryImages = {
                 thumb: 'beret-yellow_thumb.png',
                 fullSize: [
                     { src: 'acc-full-size/beret-yellow.png', 
-                      zIndex: 22 }
+                      zIndex: 220 }
                 ]
             },
             
@@ -16,7 +16,7 @@ export const accessoryImages = {
                 thumb: 'beret-green_thumb.png',
                 fullSize: [
                     { src: 'acc-full-size/beret-green.png', 
-                      zIndex: 22 }
+                      zIndex: 220 }
                 ]
             },
 
@@ -24,7 +24,7 @@ export const accessoryImages = {
                 thumb: 'beret-pink_thumb.png',
                 fullSize: [
                     { src: 'acc-full-size/beret-pink.png', 
-                      zIndex: 22 }
+                      zIndex: 220 }
                 ]
             }
         },
@@ -41,7 +41,7 @@ export const accessoryImages = {
                 thumb: 'bow-peach_thumb.png',
                 fullSize: [
                     { src: 'acc-full-size/bow-peach.png', 
-                      zIndex: 21 }
+                      zIndex: 210 }
                 ]
             },
             
@@ -49,7 +49,7 @@ export const accessoryImages = {
                 thumb: 'bow-pink_thumb.png',
                 fullSize: [
                     { src: 'acc-full-size/bow-pink.png', 
-                      zIndex: 21 }
+                      zIndex: 210 }
                 ]
             },
 
@@ -57,7 +57,7 @@ export const accessoryImages = {
                 thumb: 'bow-purple_thumb.png',
                 fullSize: [
                     { src: 'acc-full-size/bow-purple.png', 
-                      zIndex: 21 }
+                      zIndex: 210 }
                 ]
             }
         },
@@ -74,11 +74,11 @@ export const accessoryImages = {
                 thumb: 'bows-purple_thumb.png',
                 fullSize: [
                     { src: 'acc-full-size/bows-purple.png', 
-                      zIndex: 21,
+                      zIndex: 210,
                       type: 'front' },
 
                     { src: 'acc-full-size/bows-back-purple.png', 
-                      zIndex: 3,
+                      zIndex: 30,
                       type: 'back' }
                 ]
             }
@@ -95,7 +95,7 @@ export const accessoryImages = {
                 thumb: 'headband-peach_thumb.png',
                 fullSize: [
                     { src: 'acc-full-size/headband-peach.png', 
-                      zIndex: 20 }
+                      zIndex: 200 }
                 ]
             },
 
@@ -103,7 +103,7 @@ export const accessoryImages = {
                 thumb: 'headband-pink_thumb.png',
                 fullSize: [
                     { src: 'acc-full-size/headband-pink.png', 
-                      zIndex: 20 }
+                      zIndex: 200 }
                 ]
             },
 
@@ -111,7 +111,7 @@ export const accessoryImages = {
                 thumb: 'headband-purple_thumb.png',
                 fullSize: [
                     { src: 'acc-full-size/headband-purple.png', 
-                      zIndex: 20 }
+                      zIndex: 200 }
                 ]
             }
         },
@@ -127,11 +127,11 @@ export const accessoryImages = {
                 thumb: 'thin-bows-pink_thumb.png',
                 fullSize: [
                     { src: 'acc-full-size/thin-bows-front-pink.png', 
-                      zIndex: 21,
+                      zIndex: 210,
                       type: 'front'},
 
                     { src: 'acc-full-size/thin-bows-back-pink.png', 
-                      zIndex: 3,
+                      zIndex: 30,
                       type: 'back'}
                 ]
             }
@@ -148,7 +148,7 @@ export const accessoryImages = {
                 thumb: 'necklace-heart_thumb.png',
                 fullSize: [
                     { src: 'acc-full-size/necklace-heart.png', 
-                      zIndex: 17 }
+                      zIndex: 170 }
                 ]
             }
         },
@@ -164,11 +164,11 @@ export const accessoryImages = {
                 thumb: 'fingerless-gloves-rainbow_thumb.png',
                 fullSize: [
                     { src: 'acc-full-size/fingerless-gloves-left-rainbow.png', 
-                      zIndex: 8,
+                      zIndex: 90,
                       type: 'front' },
 
                     { src: 'acc-full-size/fingerless-gloves-right-rainbow.png', 
-                      zIndex: 8,
+                      zIndex: 90,
                       type: 'back' }
                 ]
             }

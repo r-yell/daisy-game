@@ -10,12 +10,12 @@ export const topImages = {
                 fullSize: [
                     // Front view of the garment, appears above most other clothing
                     { src: 'tops-full-size/jersey-tee-cream.png', 
-                      zIndex: 15,
+                      zIndex: 150,
                       type: 'front' },
 
                     // Back view, appears behind other clothing
                     { src: 'tops-full-size/jersey-tee-back-cream.png',
-                      zIndex: 2,
+                      zIndex: 20,
                       type: 'back' }
                 ]
             },
@@ -23,11 +23,11 @@ export const topImages = {
                 thumb: 'jersey-tee-green_thumb.png',
                 fullSize: [
                     { src: 'tops-full-size/jersey-tee-green.png', 
-                      zIndex: 15,
+                      zIndex: 150,
                       type: 'front' },
 
                     { src: 'tops-full-size/jersey-tee-back-green.png',
-                      zIndex: 2,
+                      zIndex: 20,
                       type: 'back' }
                 ]
             },
@@ -35,11 +35,11 @@ export const topImages = {
                 thumb: 'jersey-tee-purple_thumb.png',
                 fullSize: [
                     { src: 'tops-full-size/jersey-tee-purple.png', 
-                      zIndex: 15,
+                      zIndex: 150,
                       type: 'front' },
 
                     { src: 'tops-full-size/jersey-tee-back-purple.png',
-                      zIndex: 2,
+                      zIndex: 20,
                       type: 'back' }
                 ]
             },
@@ -47,11 +47,11 @@ export const topImages = {
                 thumb: 'jersey-tee-navy_thumb.png',
                 fullSize: [
                     { src: 'tops-full-size/jersey-tee-navy.png', 
-                      zIndex: 15,
+                      zIndex: 150,
                       type: 'front' },
 
                     { src: 'tops-full-size/jersey-tee-back-navy.png',
-                      zIndex: 2,
+                      zIndex: 20,
                       type: 'back' }
                 ]
             }
@@ -69,7 +69,7 @@ export const topImages = {
                 thumb: 'turtle-neck-black_thumb.png',
                 fullSize: [
                     { src: 'tops-full-size/turtle-neck-black.png', 
-                      zIndex: 9 }
+                      zIndex: 80 }
                 ]
             }
         },
@@ -85,7 +85,7 @@ export const topImages = {
                 thumb: 'stripe-tank-red_thumb.png',
                 fullSize: [
                     { src: 'tops-full-size/stripe-tank-red.png', 
-                      zIndex: 10 }
+                      zIndex: 100 }
                 ]
             },
 
@@ -93,7 +93,7 @@ export const topImages = {
                 thumb: 'stripe-tank-blue_thumb.png',
                 fullSize: [
                     { src: 'tops-full-size/stripe-tank-blue.png', 
-                      zIndex: 10 }
+                      zIndex: 100 }
                 ]
             }
         },
@@ -110,12 +110,12 @@ export const topImages = {
                 fullSize: [
                     { 
                         src: 'tops-full-size/ruffle-shirt-front-pink.png', 
-                        zIndex: 14,
+                        zIndex: 140,
                         type: 'front'  // Adding type to identify parts
                     },
                     { 
                         src: 'tops-full-size/ruffle-shirt-sleeves.png', 
-                        zIndex: 9,
+                        zIndex: 95,
                         type: 'sleeves'
                     }
                 ]
@@ -125,12 +125,12 @@ export const topImages = {
                 fullSize: [
                     { 
                         src: 'tops-full-size/ruffle-shirt-front-purple.png', 
-                        zIndex: 14,
+                        zIndex: 140,
                         type: 'front'  // Adding type to identify parts
                     },
                     { 
                         src: 'tops-full-size/ruffle-shirt-sleeves.png', 
-                        zIndex: 9,
+                        zIndex: 95,
                         type: 'sleeves'
                     }
                 ]
@@ -149,14 +149,14 @@ export const topImages = {
                 thumb: 'sweater-honey_thumb.png',
                 fullSize: [
                     { src: 'tops-full-size/sweater-honey.png', 
-                      zIndex: 16 }
+                      zIndex: 160 }
                 ]
             },
             'purple': {
                 thumb: 'sweater-purple_thumb.png',
                 fullSize: [
                     { src: 'tops-full-size/sweater-purple.png', 
-                      zIndex: 16 }
+                      zIndex: 160 }
                 ]
             }
         },
@@ -172,14 +172,14 @@ export const topImages = {
                 thumb: 'butterfly-tee-charc_thumb.png',
                 fullSize: [
                     { src: 'tops-full-size/butterfly-tee-charc.png', 
-                      zIndex: 14 }
+                      zIndex: 140 }
                 ]
             },
             'pink': {
                 thumb: 'butterfly-tee-pink_thumb.png',
                 fullSize: [
                     { src: 'tops-full-size/butterfly-tee-pink.png', 
-                      zIndex: 14 }
+                      zIndex: 140 }
                 ]
             }
         },
@@ -196,17 +196,17 @@ export const topImages = {
                 fullSize: [
                     { 
                         src: 'tops-full-size/knit-sweater-sleeves-brown.png', 
-                        zIndex: 10,
+                        zIndex: 100,
                         type: 'sleeves'
                     },
                     { 
                         src: 'tops-full-size/knit-sweater-body-brown.png', 
-                        zIndex: 15,
+                        zIndex: 150,
                         type: 'body'
                     },
                     { 
                         src: 'tops-full-size/knit-sweater-back-brown.png',
-                        zIndex: 2,
+                        zIndex: 20,
                         type: 'back'
                     }
                 ]

@@ -8,7 +8,7 @@ export const fullBodyImages = {
                 thumb: 'cape-yellow_thumb.png',
                 fullSize: [
                     { src: 'full-body-full-size/cape-front-yellow.png', 
-                      zIndex: 18,
+                      zIndex: 180,
                       type: 'front' },
 
                     { src: 'full-body-full-size/cape-back-yellow.png',
@@ -21,7 +21,7 @@ export const fullBodyImages = {
                 thumb: 'cape-green_thumb.png',
                 fullSize: [
                     { src: 'full-body-full-size/cape-front-green.png', 
-                      zIndex: 18, 
+                      zIndex: 180, 
                       type: 'front' },
 
                     { src: 'full-body-full-size/cape-back-green.png',
@@ -34,7 +34,7 @@ export const fullBodyImages = {
                 thumb: 'cape-pink_thumb.png',
                 fullSize: [
                     { src: 'full-body-full-size/cape-front-pink.png', 
-                      zIndex: 18, 
+                      zIndex: 180, 
                       type: 'front' },
 
                     { src: 'full-body-full-size/cape-back-pink.png',
