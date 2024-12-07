@@ -14,7 +14,8 @@ export const fullBodyImages = {
                     { src: 'full-body-full-size/cape-back-yellow.png',
                       zIndex: 0,
                       type: 'back' }
-                ]
+                ],
+                buttonColor: '#fac357'
             },
 
             'green': {
@@ -27,7 +28,8 @@ export const fullBodyImages = {
                     { src: 'full-body-full-size/cape-back-green.png',
                       zIndex: 0,
                       type: 'back' }
-                ]
+                ],
+                buttonColor: '#c4cd75'
             },
 
             'pink': {
@@ -40,7 +42,8 @@ export const fullBodyImages = {
                     { src: 'full-body-full-size/cape-back-pink.png',
                       zIndex: 0,
                       type: 'back' }
-                ]
+                ],
+                buttonColor: '#e08796'
             }
         },
         defaultColor: 'yellow',
@@ -120,11 +123,15 @@ export function loadFullBody() {
             const colorSwitcher = document.createElement('div');
             colorSwitcher.className = 'color-switcher';
             
+            // Create color button that matches color of the garment
             Object.keys(itemData.colors).forEach(color => {
                 const colorBtn = document.createElement('button');
                 colorBtn.className = 'color-btn';
                 colorBtn.dataset.color = color;
                 colorBtn.title = color;
+                if (itemData.colors[color].buttonColor) {
+                    colorBtn.style.backgroundColor = itemData.colors[color].buttonColor;
+                }
                 
                 colorBtn.addEventListener('click', () => {
                     if (colorBtn.classList.contains('locked-color-btn')) {

@@ -9,14 +9,16 @@ export const bottomImages = {
                 fullSize: [
                     { src: 'bottoms-full-size/tulle-skirt-pink.png', 
                       zIndex: 130 }
-                ]
+                ],
+                buttonColor: '#e69c92'
             },
             'black': {
                 thumb: 'tulle-skirt-black_thumb.png',
                 fullSize: [
                     { src: 'bottoms-full-size/tulle-skirt-black.png', 
                       zIndex: 130 }
-                ]
+                ],
+                buttonColor: '#533935'
             }
         },
         defaultColor: 'pink',
@@ -32,7 +34,8 @@ export const bottomImages = {
                 fullSize: [
                     { src: 'bottoms-full-size/flares-denim.png', 
                       zIndex: 110 }
-                ]
+                ],
+                buttonColor: '#566983'
             }
         },
         defaultColor: 'denim',
@@ -48,7 +51,8 @@ export const bottomImages = {
                 fullSize: [
                     { src: 'bottoms-full-size/print-flares-pink.png', 
                       zIndex: 110 }
-                ]
+                ],
+                buttonColor: '#caa9ba'
             },
 
             'purple': {
@@ -56,7 +60,8 @@ export const bottomImages = {
                 fullSize: [
                     { src: 'bottoms-full-size/print-flares-purple.png', 
                       zIndex: 110 }
-                ]
+                ],
+                buttonColor: '#c591a0'
             },
 
             'blue': {
@@ -64,7 +69,8 @@ export const bottomImages = {
                 fullSize: [
                     { src: 'bottoms-full-size/print-flares-blue.png', 
                       zIndex: 110 }
-                ]
+                ],
+                buttonColor: '#a5acc8'
             }   
         },
         defaultColor: 'pink',
@@ -80,7 +86,8 @@ export const bottomImages = {
                 fullSize: [
                     { src: 'bottoms-full-size/long-shorts-denim.png', 
                       zIndex: 110 }
-                ]
+                ],
+                buttonColor: '#736054'
             },
 
             'blue': {
@@ -88,7 +95,8 @@ export const bottomImages = {
                 fullSize: [
                     { src: 'bottoms-full-size/long-shorts-blue.png', 
                       zIndex: 110 }
-                ]
+                ],
+                buttonColor: '#9391a3'
             }
         },
         defaultColor: 'denim',
@@ -104,7 +112,8 @@ export const bottomImages = {
                 fullSize: [
                     { src: 'bottoms-full-size/animal-print-skirt-pink.png', 
                       zIndex: 120 }
-                ]
+                ],
+                buttonColor: '#ce9192'
             },
 
             'brown': {
@@ -112,7 +121,8 @@ export const bottomImages = {
                 fullSize: [
                     { src: 'bottoms-full-size/animal-print-skirt-brown.png', 
                       zIndex: 120 }
-                ]
+                ],
+                buttonColor: '#804e37'
             }
         },
         defaultColor: 'pink',
@@ -192,11 +202,15 @@ export function loadBottoms() {
             const colorSwitcher = document.createElement('div');
             colorSwitcher.className = 'color-switcher';
             
+            // Create color button that matches color of the garment
             Object.keys(itemData.colors).forEach(color => {
                 const colorBtn = document.createElement('button');
                 colorBtn.className = 'color-btn';
                 colorBtn.dataset.color = color;
                 colorBtn.title = color;
+                if (itemData.colors[color].buttonColor) {
+                    colorBtn.style.backgroundColor = itemData.colors[color].buttonColor;
+                }
                 
                 colorBtn.addEventListener('click', () => {
                     if (colorBtn.classList.contains('locked-color-btn')) {

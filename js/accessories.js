@@ -9,7 +9,8 @@ export const accessoryImages = {
                 fullSize: [
                     { src: 'acc-full-size/beret-yellow.png', 
                       zIndex: 220 }
-                ]
+                ],
+                buttonColor: '#fac356'
             },
             
             'green': {
@@ -17,7 +18,8 @@ export const accessoryImages = {
                 fullSize: [
                     { src: 'acc-full-size/beret-green.png', 
                       zIndex: 220 }
-                ]
+                ],
+                buttonColor: '#c4cd75'
             },
 
             'pink': {
@@ -25,7 +27,8 @@ export const accessoryImages = {
                 fullSize: [
                     { src: 'acc-full-size/beret-pink.png', 
                       zIndex: 220 }
-                ]
+                ],
+                buttonColor: '#e18897'
             }
         },
 
@@ -42,7 +45,8 @@ export const accessoryImages = {
                 fullSize: [
                     { src: 'acc-full-size/bow-peach.png', 
                       zIndex: 210 }
-                ]
+                ],
+                buttonColor: '#e9a38a'
             },
             
             'pink': {
@@ -50,7 +54,8 @@ export const accessoryImages = {
                 fullSize: [
                     { src: 'acc-full-size/bow-pink.png', 
                       zIndex: 210 }
-                ]
+                ],
+                buttonColor: '#eb928b'
             },
 
             'purple': {
@@ -58,7 +63,8 @@ export const accessoryImages = {
                 fullSize: [
                     { src: 'acc-full-size/bow-purple.png', 
                       zIndex: 210 }
-                ]
+                ],
+                buttonColor: '#c09fc1'
             }
         },
 
@@ -80,7 +86,8 @@ export const accessoryImages = {
                     { src: 'acc-full-size/bows-back-purple.png', 
                       zIndex: 30,
                       type: 'back' }
-                ]
+                ],
+                buttonColor: '#d893b2'
             }
         },
         defaultColor: 'purple',
@@ -96,7 +103,8 @@ export const accessoryImages = {
                 fullSize: [
                     { src: 'acc-full-size/headband-peach.png', 
                       zIndex: 200 }
-                ]
+                ],
+                buttonColor: '#eba48b'
             },
 
             'pink': {
@@ -104,7 +112,8 @@ export const accessoryImages = {
                 fullSize: [
                     { src: 'acc-full-size/headband-pink.png', 
                       zIndex: 200 }
-                ]
+                ],
+                buttonColor: '#eb928b'
             },
 
             'purple': {
@@ -112,7 +121,8 @@ export const accessoryImages = {
                 fullSize: [
                     { src: 'acc-full-size/headband-purple.png', 
                       zIndex: 200 }
-                ]
+                ],
+                buttonColor: '#c09fc1'
             }
         },
         defaultColor: 'peach',
@@ -133,7 +143,8 @@ export const accessoryImages = {
                     { src: 'acc-full-size/thin-bows-back-pink.png', 
                       zIndex: 30,
                       type: 'back'}
-                ]
+                ],
+                buttonColor: '#f5c2bf'
             }
         },
         defaultColor: 'pink',
@@ -149,7 +160,8 @@ export const accessoryImages = {
                 fullSize: [
                     { src: 'acc-full-size/necklace-heart.png', 
                       zIndex: 170 }
-                ]
+                ],
+                buttonColor: '#e89c44'
             }
         },
         defaultColor: 'heart',
@@ -170,7 +182,8 @@ export const accessoryImages = {
                     { src: 'acc-full-size/fingerless-gloves-right-rainbow.png', 
                       zIndex: 90,
                       type: 'back' }
-                ]
+                ],
+                buttonColor: '#e49c55'
             }
         },
         defaultColor: 'rainbow',
@@ -251,11 +264,15 @@ export function loadAccessories() {
             const colorSwitcher = document.createElement('div');
             colorSwitcher.className = 'color-switcher';
             
+            // Create color button that matches color of the garment
             Object.keys(itemData.colors).forEach(color => {
                 const colorBtn = document.createElement('button');
                 colorBtn.className = 'color-btn';
                 colorBtn.dataset.color = color;
                 colorBtn.title = color;
+                if (itemData.colors[color].buttonColor) {
+                    colorBtn.style.backgroundColor = itemData.colors[color].buttonColor;
+                }
                 
                 colorBtn.addEventListener('click', () => {
                     if (colorBtn.classList.contains('locked-color-btn')) {

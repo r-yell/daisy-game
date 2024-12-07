@@ -17,7 +17,8 @@ export const topImages = {
                     { src: 'tops-full-size/jersey-tee-back-cream.png',
                       zIndex: 20,
                       type: 'back' }
-                ]
+                ],
+                buttonColor: '#f7c898'
             },
             'green': {
                 thumb: 'jersey-tee-green_thumb.png',
@@ -29,7 +30,8 @@ export const topImages = {
                     { src: 'tops-full-size/jersey-tee-back-green.png',
                       zIndex: 20,
                       type: 'back' }
-                ]
+                ],
+                buttonColor: '#629467'
             },
             'purple': {
                 thumb: 'jersey-tee-purple_thumb.png',
@@ -41,7 +43,8 @@ export const topImages = {
                     { src: 'tops-full-size/jersey-tee-back-purple.png',
                       zIndex: 20,
                       type: 'back' }
-                ]
+                ],
+                buttonColor: '#d393ad'
             },
             'navy': {
                 thumb: 'jersey-tee-navy_thumb.png',
@@ -53,7 +56,8 @@ export const topImages = {
                     { src: 'tops-full-size/jersey-tee-back-navy.png',
                       zIndex: 20,
                       type: 'back' }
-                ]
+                ],
+                buttonColor: '#6e576a'
             }
         },
         defaultColor: 'cream',
@@ -70,7 +74,8 @@ export const topImages = {
                 fullSize: [
                     { src: 'tops-full-size/turtle-neck-black.png', 
                       zIndex: 80 }
-                ]
+                ],
+                buttonColor: '#50352c'
             }
         },
         defaultColor: 'black',
@@ -86,7 +91,8 @@ export const topImages = {
                 fullSize: [
                     { src: 'tops-full-size/stripe-tank-red.png', 
                       zIndex: 100 }
-                ]
+                ],
+                buttonColor: '#d95d59'
             },
 
             'blue': {
@@ -94,7 +100,8 @@ export const topImages = {
                 fullSize: [
                     { src: 'tops-full-size/stripe-tank-blue.png', 
                       zIndex: 100 }
-                ]
+                ],
+                buttonColor: '#9da6a8'
             }
         },
         defaultColor: 'red',
@@ -118,7 +125,8 @@ export const topImages = {
                         zIndex: 95,
                         type: 'sleeves'
                     }
-                ]
+                ],
+                buttonColor: '#e8b2b2'
             },
             'purple': {
                 thumb: 'ruffle-shirt-purple_thumb.png',
@@ -133,7 +141,8 @@ export const topImages = {
                         zIndex: 95,
                         type: 'sleeves'
                     }
-                ]
+                ],
+                buttonColor: '#b18ea8'
             }
         },
         defaultColor: 'pink',
@@ -150,14 +159,16 @@ export const topImages = {
                 fullSize: [
                     { src: 'tops-full-size/sweater-honey.png', 
                       zIndex: 160 }
-                ]
+                ],
+                buttonColor: '#e49c55'
             },
             'purple': {
                 thumb: 'sweater-purple_thumb.png',
                 fullSize: [
                     { src: 'tops-full-size/sweater-purple.png', 
                       zIndex: 160 }
-                ]
+                ],
+                buttonColor: '#c38984'
             }
         },
         defaultColor: 'honey',
@@ -173,14 +184,16 @@ export const topImages = {
                 fullSize: [
                     { src: 'tops-full-size/butterfly-tee-charc.png', 
                       zIndex: 140 }
-                ]
+                ],
+                buttonColor: '#54413b'
             },
             'pink': {
                 thumb: 'butterfly-tee-pink_thumb.png',
                 fullSize: [
                     { src: 'tops-full-size/butterfly-tee-pink.png', 
                       zIndex: 140 }
-                ]
+                ],
+                buttonColor: '#d69397'
             }
         },
         defaultColor: 'charc',
@@ -209,7 +222,8 @@ export const topImages = {
                         zIndex: 20,
                         type: 'back'
                     }
-                ]
+                ],
+                buttonColor: '#745941'
             }
         },
         defaultColor: 'brown',
@@ -301,11 +315,15 @@ export function loadTops() {
             const colorSwitcher = document.createElement('div');
             colorSwitcher.className = 'color-switcher';
             
+            // Create color button that matches color of the garment
             Object.keys(itemData.colors).forEach(color => {
                 const colorBtn = document.createElement('button');
                 colorBtn.className = 'color-btn';
                 colorBtn.dataset.color = color;
                 colorBtn.title = color;
+                if (itemData.colors[color].buttonColor) {
+                    colorBtn.style.backgroundColor = itemData.colors[color].buttonColor;
+                }
                 
                 colorBtn.addEventListener('click', () => {
                     if (colorBtn.classList.contains('locked-color-btn')) {

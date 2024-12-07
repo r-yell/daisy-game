@@ -9,7 +9,8 @@ export const shoeImages = {
                 fullSize: [
                     { src: 'shoes-full-size/leggings-purple.png', 
                       zIndex: 60 }
-                ]
+                ],
+                buttonColor: '#d1a1b6'  
             },
 
             'white': {
@@ -17,7 +18,8 @@ export const shoeImages = {
                 fullSize: [
                     { src: 'shoes-full-size/leggings-white.png', 
                       zIndex: 60 }
-                ]
+                ],
+                buttonColor: '#ead7d2'  
             }
         },
         defaultColor: 'purple',
@@ -33,7 +35,8 @@ export const shoeImages = {
                 fullSize: [
                     { src: 'shoes-full-size/loafers-brown.png', 
                       zIndex: 80 }
-                ]
+                ],
+                buttonColor: '#794d3b'  
             }
         },
 
@@ -55,7 +58,8 @@ export const shoeImages = {
                     { src: 'shoes-full-size/mary-janes-back-black.png', 
                       zIndex: 80,
                       type: 'back' }
-                ]
+                ],
+                buttonColor: '#51362d'  
             }
         },
 
@@ -72,7 +76,8 @@ export const shoeImages = {
                 fullSize: [
                     { src: 'shoes-full-size/ruffle-hem-socks-white.png', 
                       zIndex: 70 }
-                ]
+                ],
+                buttonColor: '#ead6d1'  
             },
 
             'pink': {
@@ -80,7 +85,8 @@ export const shoeImages = {
                 fullSize: [
                     { src: 'shoes-full-size/ruffle-hem-socks-pink.png', 
                       zIndex: 70 }
-                ]
+                ],
+                buttonColor: '#e7b7d6'  
             }
         },
 
@@ -97,7 +103,8 @@ export const shoeImages = {
                 fullSize: [
                     { src: 'shoes-full-size/sneakers-black.png', 
                       zIndex: 80 }
-                ]
+                ],
+                buttonColor: '#51362d'  
             },
 
             'blue': {
@@ -105,7 +112,8 @@ export const shoeImages = {
                 fullSize: [
                     { src: 'shoes-full-size/sneakers-blue.png', 
                       zIndex: 80 }
-                ]
+                    ],
+                buttonColor: '#bdbcc5'  
             }
         },
 
@@ -122,7 +130,8 @@ export const shoeImages = {
                 fullSize: [
                     { src: 'shoes-full-size/socks-white.png', 
                       zIndex: 70 }
-                ]
+                ],
+                buttonColor: '#ead7d2'  
             },
 
             'purple': {
@@ -130,7 +139,8 @@ export const shoeImages = {
                 fullSize: [
                     { src: 'shoes-full-size/socks-purple.png', 
                       zIndex: 70 }
-                ]
+                ],
+                buttonColor: '#d6bbcc'  
             },
 
             'blue   ': {
@@ -138,7 +148,8 @@ export const shoeImages = {
                 fullSize: [
                     { src: 'shoes-full-size/socks-blue.png', 
                       zIndex: 70 }
-                ]
+                ],
+                buttonColor: '#c6c6cf'  
             }
         },
 
@@ -155,7 +166,8 @@ export const shoeImages = {
                 fullSize: [
                     { src: 'shoes-full-size/sports-socks-honey.png', 
                       zIndex: 70 }
-                ]
+                ],
+                buttonColor: '#e6ad65'  
             },
 
             'green': {
@@ -163,7 +175,8 @@ export const shoeImages = {
                 fullSize: [
                     { src: 'shoes-full-size/sports-socks-green.png', 
                       zIndex: 70 }
-                ]
+                ],
+                buttonColor: '#e0dc6b'  
             },
 
             'pink': {
@@ -171,7 +184,8 @@ export const shoeImages = {
                 fullSize: [
                     { src: 'shoes-full-size/sports-socks-pink.png', 
                       zIndex: 70 }
-                ]
+                ],
+                buttonColor: '#e092a2'  
             }
         },
 
@@ -252,11 +266,15 @@ export function loadShoes() {
             const colorSwitcher = document.createElement('div');
             colorSwitcher.className = 'color-switcher';
             
+            // Create color button that matches color of the garment
             Object.keys(itemData.colors).forEach(color => {
                 const colorBtn = document.createElement('button');
                 colorBtn.className = 'color-btn';
                 colorBtn.dataset.color = color;
                 colorBtn.title = color;
+                if (itemData.colors[color].buttonColor) {
+                    colorBtn.style.backgroundColor = itemData.colors[color].buttonColor;
+                }
                 
                 colorBtn.addEventListener('click', () => {
                     if (colorBtn.classList.contains('locked-color-btn')) {
