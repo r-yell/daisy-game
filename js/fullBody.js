@@ -53,7 +53,7 @@ export const fullBodyImages = {
 export function loadFullBody() {
     const DOM = getDOMElements();
     
-    DOM.clothesGrid.innerHTML = '';
+    DOM.thumbGrid.innerHTML = '';
     
     Object.entries(fullBodyImages).forEach(([itemName, itemData]) => {
         const thumbContainer = document.createElement('div');
@@ -165,6 +165,6 @@ export function loadFullBody() {
             thumbContainer.appendChild(img);
         }
         
-        DOM.clothesGrid.appendChild(thumbContainer);
+        DOM.thumbGrid.appendChild(thumbContainer);
     });
 } 

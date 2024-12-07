@@ -13,24 +13,44 @@ h1 {
     padding: 20px 0;
 }   
 
+body {
+    background-color: #f9a0a3;
+    min-width: 877px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* Layout Containers */
 main {
-    width: 1200px;
-    height: 850px;
+    min-width: 857px;
+    min-height: 755px;
+    max-width: 1200px;
+    max-height: 850px;
     margin-inline: auto; /* Modern way to center horizontally */
-    padding: 20px;
+    margin: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    border: 3px solid #f9a0a3;
+    outline: 20px solid #fef4e9;
     border-radius: 20px;
     background-color: #fef4e9;
 }
 
+.border-container {
+    border: 1px solid blue;
+}
+
+.all-container {
+    width: 90%;
+    height: 90%
+}
+
 .content-container {
     display: flex;
-    width: 1036px;
+    width: 100%;
 }
 
 /* Navigation Styles */
@@ -45,8 +65,15 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgb(214, 200, 188);
     cursor: pointer;
+    border: 2px solid white;
+    border-bottom: none;
+    border-left: none;
+    background-color: white;
+}
+
+.clothes-btn:first-of-type {
+    border-left: 2px solid white;
 }
 
 .clothes-btn:hover {
@@ -54,8 +81,7 @@ main {
 }
 
 .left-nav {
-    height: 550px;
-    margin-top: 30px;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -73,17 +99,37 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 2px solid white;
+    border-right: none;
+    border-bottom: none;
+    background-color: white;
+}
+
+.background-btn:last-of-type, .album-btn {
+    border-bottom: 2px solid white;
+} 
+
+.background-btn {
+    
 }
 
 /* Main Content Area */
 .daisy-container {
-    width: 333px;
-    height: 667px;
+    min-width: 250px;
+    max-width: 333px;
     position: relative;
-    border: 1px solid rgb(214, 200, 188);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    overflow: hidden;
+    align-content: center;
+    flex: 1;
+    border: 2px solid white;
 }
+
+.daisy-container, .thumb-grid-container, .left-nav {
+    min-height: 550px;
+    max-height: 667px;
+}
+
+
 
 /* Character and Clothing Images */
 .daisy-img {
@@ -99,6 +145,9 @@ main {
     height: 100%;
     width: auto;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Action Buttons */
@@ -109,44 +158,46 @@ main {
     padding: 10px;
     border-radius: 10px;
     z-index: 1000;
+    bottom: 10px;
 }
 
 .capture-btn {
-    top: 615px;
     left: 10px;
     cursor: pointer;
 }
 
 .reset-btn {
-    top: 615px;
-    left: 250px;
+    right: 10px;
 }
 
 /* Preview Section */
-.preview-container {
-    height: 667px;
-    border: 1px solid rgb(214, 200, 188);
-    flex: 1;
+.thumb-grid-container {
+    display: flex;
+    flex: 2;
+    align-items: center;
     overflow: scroll;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border: 2px solid white;
+    border-left: none;
 }
 
 /* Clothes Grid Layout */
-.clothes-grid {
-    display: flex;
-    flex-wrap: wrap;
-    overflow: hidden;
-    padding: 5px;
+.thumb-grid {
+    display: grid;
+    column-gap: 20px;
+    row-gap: 10px;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-flow: column;
+    padding: 20px;
 }
 
 /* Thumbnail Styles */
 .thumb-container {
-    width: 30%;
-    padding: 10px;
+    width: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .thumb {
@@ -156,41 +207,60 @@ main {
     cursor: pointer;
     border-radius: 20px;
     margin-bottom: 0;
-    border: 1px solid rgb(214, 200, 188);
+    outline: 1px solid rgb(214, 200, 188);
+    outline-offset: -10px;
+    border: 10px solid white;
+    position: relative;
 }
 
 .selected-thumb {
-    border: 5px solid rgb(214, 200, 188);
+    outline: none;
+    border: 10px solid #f9a0a3;
 }
 
 .locked-thumb {
-    filter: brightness(0.5);
+    filter: brightness(0.6);
     pointer-events: none;
+    cursor: not-allowed;
+    position: relative;
+}
+
+.thumb-container:has(.locked-thumb)::after {
+    content: '';
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 21.9 21.9'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:none;stroke:%23cd4d55;stroke-miterlimit:10;stroke-width:3px;%7D%3C/style%3E%3C/defs%3E%3Cg%3E%3Cg id='Layer_1'%3E%3Ccircle class='cls-1' cx='10.9' cy='10.9' r='9.4'/%3E%3Cline class='cls-1' x1='4.3' y1='17.6' x2='17.6' y2='4.3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 1;
 }
 
 /* Color Switcher Styles */
 .color-switcher {
     display: flex;
-    gap: 5px;
-    padding: 2px;
+    gap: 8px;
+    padding: 3px;
 }
 
 .color-btn {
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
     border: none;
-    background-color: rgb(214, 200, 188);
+    background-color: #d5c7bd;
     cursor: pointer;
     padding: 0;
 }
 
 .color-btn:hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
 }
 
 .locked-color-btn {
-    filter: brightness(0.5);
+    filter: opacity(0);
     pointer-events: none;
 }
 
@@ -232,7 +302,7 @@ main {
 .album-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
+    gap: 25px;
     padding: 20px;
 }
 
@@ -283,4 +353,9 @@ main {
 .album-delete-btn:hover {
     transform: scale(1.1);
     background-color: #ff0000;
+}
+
+/* Styling */
+.stamp-border {
+    
 }

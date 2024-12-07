@@ -185,7 +185,7 @@ export const shoeImages = {
 export function loadShoes() {
     const DOM = getDOMElements();
     
-    DOM.clothesGrid.innerHTML = '';
+    DOM.thumbGrid.innerHTML = '';
     
     Object.entries(shoeImages).forEach(([itemName, itemData]) => {
         const thumbContainer = document.createElement('div');
@@ -297,6 +297,6 @@ export function loadShoes() {
             thumbContainer.appendChild(img);
         }
         
-        DOM.clothesGrid.appendChild(thumbContainer);
+        DOM.thumbGrid.appendChild(thumbContainer);
     });
 } 

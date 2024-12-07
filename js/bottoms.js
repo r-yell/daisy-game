@@ -125,7 +125,7 @@ export const bottomImages = {
 export function loadBottoms() {
     const DOM = getDOMElements();
     
-    DOM.clothesGrid.innerHTML = '';
+    DOM.thumbGrid.innerHTML = '';
     
     Object.entries(bottomImages).forEach(([itemName, itemData]) => {
         const thumbContainer = document.createElement('div');
@@ -237,6 +237,6 @@ export function loadBottoms() {
             thumbContainer.appendChild(img);
         }
         
-        DOM.clothesGrid.appendChild(thumbContainer);
+        DOM.thumbGrid.appendChild(thumbContainer);
     });
 } 

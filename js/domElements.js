@@ -1,6 +1,6 @@
 // Create an object to store DOM references
 const DOM = {
-    clothesGrid: null,
+    thumbGrid: null,
     daisyContainer: null,
     captureBtn: null,
     resetButton: null,
@@ -15,7 +15,7 @@ const DOM = {
 
 // Initialize DOM references
 export function initializeDOMReferences() {
-    DOM.clothesGrid = document.querySelector('.clothes-grid');
+    DOM.thumbGrid = document.querySelector('.thumb-grid');
     DOM.daisyContainer = document.querySelector('.daisy-container');
     DOM.captureBtn = document.querySelector('.capture-btn');
     DOM.resetButton = document.querySelector('.reset-btn');

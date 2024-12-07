@@ -222,11 +222,8 @@ export const topImages = {
 // Export the loadTops function
 export function loadTops() {
     const DOM = getDOMElements();
+    DOM.thumbGrid.innerHTML = '';
     
-    // Clear existing grid before loading new items
-    DOM.clothesGrid.innerHTML = '';
-    
-    // Iterate through each clothing item and create its thumbnail
     Object.entries(topImages).forEach(([itemName, itemData]) => {
         const thumbContainer = document.createElement('div');
         thumbContainer.className = 'thumb-container';
@@ -350,6 +347,6 @@ export function loadTops() {
             thumbContainer.appendChild(img);
         }
         
-        DOM.clothesGrid.appendChild(thumbContainer);
+        DOM.thumbGrid.appendChild(thumbContainer);
     });
 }

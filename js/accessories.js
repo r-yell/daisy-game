@@ -183,7 +183,7 @@ export const accessoryImages = {
 export function loadAccessories() {
     const DOM = getDOMElements();
     
-    DOM.clothesGrid.innerHTML = '';
+    DOM.thumbGrid.innerHTML = '';
     
     Object.entries(accessoryImages).forEach(([itemName, itemData]) => {
         const thumbContainer = document.createElement('div');
@@ -296,6 +296,6 @@ export function loadAccessories() {
             thumbContainer.appendChild(img);
         }
         
-        DOM.clothesGrid.appendChild(thumbContainer);
+        DOM.thumbGrid.appendChild(thumbContainer);
     });
 } 
