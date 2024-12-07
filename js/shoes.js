@@ -56,7 +56,7 @@ export const shoeImages = {
                       type: 'front' },
 
                     { src: 'shoes-full-size/mary-janes-back-black.png', 
-                      zIndex: 80,
+                      zIndex: 20,
                       type: 'back' }
                 ],
                 buttonColor: '#51362d'  
@@ -252,7 +252,7 @@ export function loadShoes() {
             itemData.colors[currentColor].fullSize.forEach(imageData => {
                 const fullSizeClothesImg = document.createElement('img');
                 fullSizeClothesImg.src = `images/clothes/shoes/${imageData.src}`;
-                fullSizeClothesImg.className = 'clothes-img';
+                fullSizeClothesImg.className = 'clothes-img pop-in-animation';
                 fullSizeClothesImg.style.zIndex = imageData.zIndex;
                 fullSizeClothesImg.dataset.itemName = itemName;
                 fullSizeClothesImg.dataset.type = imageData.type;
@@ -296,7 +296,7 @@ export function loadShoes() {
                     itemData.colors[color].fullSize.forEach(imageData => {
                         const fullSizeClothesImg = document.createElement('img');
                         fullSizeClothesImg.src = `images/clothes/shoes/${imageData.src}`;
-                        fullSizeClothesImg.className = 'clothes-img';
+                        fullSizeClothesImg.className = 'clothes-img pop-in-animation';
                         fullSizeClothesImg.style.zIndex = imageData.zIndex;
                         fullSizeClothesImg.dataset.itemName = itemName;
                         fullSizeClothesImg.dataset.type = imageData.type;

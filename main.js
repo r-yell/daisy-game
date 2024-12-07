@@ -19,12 +19,27 @@ function takeScreenshot() {
     DOM.captureBtn.style.display = 'none';
     DOM.resetButton.style.display = 'none';
     
+    // Temporarily remove animations from clothes
+    const clothesImages = DOM.daisyContainer.querySelectorAll('.clothes-img');
+    clothesImages.forEach(img => {
+        img.style.animation = 'none';
+        img.style.opacity = '1';
+        img.style.filter = 'none';
+    });
+    
     html2canvas(DOM.daisyContainer, {
         backgroundColor: null
     }).then(canvas => {
         // Show the buttons again
         DOM.captureBtn.style.display = 'block';
         DOM.resetButton.style.display = 'block';
+        
+        // Restore animations
+        clothesImages.forEach(img => {
+            img.style.animation = '';
+            img.style.opacity = '';
+            img.style.filter = '';
+        });
         
         // Convert canvas to data URL
         const screenshotURL = canvas.toDataURL('image/png');

@@ -189,6 +189,7 @@ main {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-auto-flow: column;
     padding: 20px;
+    min-width: 720px;
 }
 
 /* Thumbnail Styles */
@@ -355,7 +356,63 @@ main {
     background-color: #ff0000;
 }
 
-/* Styling */
-.stamp-border {
-    
+/* Animation Styles */
+
+@keyframes FullSizePopIn {
+    0% {opacity: 0; 
+        filter: blur(10px) brightness(200%); 
+        top: 50%;
+        left: 50%;
+        color: white;
+    }
+    75% { top: 50%;
+        left: 50%;
+    }
+    85% { top: 50%;
+        left: 50%;
+    }
+    97% { opacity: 1;
+        top: 50%;
+        left: 50%; 
+    }
+    100% { 
+        top: 50%;
+        left: 50%;
+    }
+}
+
+.clothes-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: auto;
+}
+
+.pop-in-animation {
+    animation: FullSizePopIn 0.3s ease-out;
+    will-change: transform;
+    transform-origin: center center;
+}
+
+@keyframes popIn {
+    0% { 
+        transform: scale(.95);
+        opacity: 0;
+        filter: blur(10px);
+    }
+    75% { transform: scale(1.02);
+    }
+    85% { transform: scale(.97);
+    }
+    97% { transform: scale(1.005);
+        opacity: 1;
+    }
+    100% { transform: scale(1);
+        filter: blur(0px);
+    }
+}
+.selected-thumb {
+    animation: popIn 0.2s ease-out;
 }

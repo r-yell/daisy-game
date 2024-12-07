@@ -299,7 +299,7 @@ export function loadTops() {
             itemData.colors[currentColor].fullSize.forEach(imageData => {
                 const fullSizeClothesImg = document.createElement('img');
                 fullSizeClothesImg.src = `images/clothes/tops/${imageData.src}`;
-                fullSizeClothesImg.className = 'clothes-img';
+                fullSizeClothesImg.className = 'clothes-img pop-in-animation';
                 fullSizeClothesImg.style.zIndex = imageData.zIndex;
                 fullSizeClothesImg.dataset.itemName = itemName;
                 fullSizeClothesImg.dataset.type = imageData.type;
@@ -345,7 +345,7 @@ export function loadTops() {
                     itemData.colors[color].fullSize.forEach(imageData => {
                         const fullSizeClothesImg = document.createElement('img');
                         fullSizeClothesImg.src = `images/clothes/tops/${imageData.src}`;
-                        fullSizeClothesImg.className = 'clothes-img';
+                        fullSizeClothesImg.className = 'clothes-img pop-in-animation';
                         fullSizeClothesImg.style.zIndex = imageData.zIndex;
                         fullSizeClothesImg.dataset.itemName = itemName;
                         fullSizeClothesImg.dataset.type = imageData.type;
