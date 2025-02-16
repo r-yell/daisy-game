@@ -9,8 +9,8 @@ const DOM = {
     albumGrid: null,
     albumCloseBtn: null,
     fullscreenView: null,
-    fullscreenCloseBtn: null,
-    fullscreenImg: null
+    fullscreenImg: null,
+    backgroundBtn: null,
 };
 
 // Initialize DOM references
@@ -19,13 +19,13 @@ export function initializeDOMReferences() {
     DOM.daisyContainer = document.querySelector('.daisy-container');
     DOM.captureBtn = document.querySelector('.capture-btn');
     DOM.resetButton = document.querySelector('.reset-btn');
-    DOM.albumButton = document.querySelector('.album-btn');
+    DOM.albumButton = document.querySelector('#album-btn');
     DOM.albumPopup = document.querySelector('.album-popup');
     DOM.albumGrid = document.querySelector('.album-grid');
     DOM.albumCloseBtn = document.querySelector('.album-close-btn');
     DOM.fullscreenView = document.querySelector('.fullscreen-view');
-    DOM.fullscreenCloseBtn = document.querySelector('.fullscreen-close-btn');
     DOM.fullscreenImg = document.querySelector('.fullscreen-img');
+    DOM.backgroundBtn = document.querySelector('#background-btn');
 }
 
 // Export DOM references

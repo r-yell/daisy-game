@@ -33,7 +33,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 3px solid #f9a0a3;
+    border: px solid #f9a0a3;
     outline: 20px solid #fef4e9;
     border-radius: 20px;
     background-color: #fef4e9;
@@ -54,66 +54,150 @@ main {
 }
 
 /* Navigation Styles */
+
 .clothes-nav {
     display: flex;
     justify-content: flex-end;
+    z-index: 1000;
+    position: relative;
+    padding-right: 25px;
 }
 
 .clothes-btn {
-    width: 130px;
-    height: 46px;
+    width: 100px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border: 2px solid white;
     border-bottom: none;
     border-left: none;
-    background-color: white;
+    background-size: 50%;
+    position: relative;
+    background-position-x: center;
+    background-position-y: 70%;
+    opacity: 0.3;
 }
 
-.clothes-btn:first-of-type {
-    border-left: 2px solid white;
+/* Clothes Button Border */
+.clothes-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/UI/clothes-btn-border.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .clothes-btn:hover {
-    background-color: rgba(214, 200, 188, 0.1);
+    background-color: #fef4e9;
+    background-size: 70%;
+    opacity: .7;
+}
+
+.clothes-btn:active {
+    background-size: 65%;
+}
+
+.clothes-btn.active  {
+    background-size: 70%;
+}
+
+#tops-btn {
+    background-image: url("images/UI/tops-icon.png");
+    background-repeat: no-repeat;
+    background-color: #c4cd75;
+}
+
+#tops-btn.active, #bottoms-btn.active, #full-body-btn.active, #shoes-btn.active, #accessories-btn.active {
+    /* background-color: #d06969; */
+    opacity: 1;
+}
+
+#bottoms-btn {
+    background-image: url("images/UI/bottoms-icon.png");
+    background-repeat: no-repeat;
+    background-color: #d2b6b3;
+}
+
+
+#full-body-btn {
+    background-image: url("images/UI/full-body-icon.png");
+    background-repeat: no-repeat;
+    background-color: #d0d8df;
+}
+
+
+#shoes-btn {
+    background-image: url("images/UI/shoes-icon.png");
+    background-repeat: no-repeat;
+    background-color: #d06969;
+}
+
+
+#accessories-btn {
+    background-image: url("images/UI/acc-icon.png");
+    background-repeat: no-repeat;
+    background-color: #ffcd6b;
 }
 
 .left-nav {
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: 20px 0;
 }
 
 /* Vertical Button Styles */
-.background-btn,
-.album-btn {
-    width: 33px;
-    height: 100px;
-    border: 1px solid rgb(214, 200, 188);
-    writing-mode: vertical-rl;
-    font-size: .7rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid white;
-    border-right: none;
-    border-bottom: none;
-    background-color: white;
-}
 
-.background-btn:last-of-type, .album-btn {
+
+.background-btn:last-of-type, .album-btn:last-of-type {
     border-bottom: 2px solid white;
 } 
 
-.background-btn {
-    
+.portrait-btn {
+    width: 80px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: none;
+    border-left: none;
+    background-size: 70%;
+    position: relative;
+    background-position-x: 70%;
+    background-position-y: center;
+}
+
+.portrait-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/UI/portrait-btn-border.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+#background-btn {
+    background-image: url("/images/UI/background-icon.png");
+    background-repeat: no-repeat;
+    background-color: #d0d8df;
+}
+
+#album-btn {
+    background-image: url("/images/UI/album-icon.png");
+    background-repeat: no-repeat;
+    background-color: #d0d8df;
 }
 
 /* Main Content Area */
+
 .daisy-container {
     min-width: 250px;
     max-width: 333px;
@@ -121,7 +205,6 @@ main {
     overflow: hidden;
     align-content: center;
     flex: 1;
-    border: 2px solid white;
 }
 
 .daisy-container, .thumb-grid-container, .left-nav {
@@ -129,6 +212,11 @@ main {
     max-height: 667px;
 }
 
+.daisy-container, .thumb-grid-container {
+    min-height: 550px;
+    max-height: 667px;
+    border: 10px solid white;
+}
 
 
 /* Character and Clothing Images */
@@ -154,20 +242,35 @@ main {
 .capture-btn,
 .reset-btn {
     position: absolute;
-    border: 1px solid rgb(214, 200, 188);
-    padding: 10px;
-    border-radius: 10px;
+    /* border: 2px solid white; */
+    padding: 18px;
+    border-radius: 15px;
     z-index: 1000;
     bottom: 10px;
 }
 
 .capture-btn {
     left: 10px;
+    width: 80px;
+    height: 70px;
     cursor: pointer;
+    background-image: url("/images/UI/camera-icon.png");
+    background-repeat: no-repeat;
+    background-size: 120%;
+    background-position: center;
+    background-color: #d0d8df;
 }
 
 .reset-btn {
     right: 10px;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    background-image: url("/images/UI/reset-icon.png");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+    background-color: #d0d8df;
 }
 
 /* Preview Section */
@@ -176,8 +279,6 @@ main {
     flex: 2;
     align-items: center;
     overflow: scroll;
-    border: 2px solid white;
-    border-left: none;
 }
 
 /* Clothes Grid Layout */
@@ -277,19 +378,29 @@ main {
     z-index: 2000;
 }
 
-.album-content, 
-.fullscreen-content {
+.album-content {
     background-color: #fef4e9;
-    padding: 20px;
-    border-radius: 20px;
     position: relative;
-    max-width: 80%;
-    max-height: 80vh;
+    width: 1100px;
+    height: 700px;
     overflow-y: auto;
 }
 
-.album-close-btn, 
-.fullscreen-close-btn {
+.fullscreen-content {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullscreen-img {
+    height: 90vh;
+    width: 100%;
+    object-fit: contain;
+}
+
+.album-close-btn {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -299,36 +410,55 @@ main {
     cursor: pointer;
 }
 
+.album-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #fef4e9;
+    position: sticky;
+    top: 0;
+    z-index: 2002;
+}
+
 /* Album Grid Layout */
 .album-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 25px;
-    padding: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    padding: 70px;
 }
 
 .album-thumb-container {
-    cursor: pointer;
     position: relative;
 }
 
 .album-thumb {
     width: 100%;
-    height: 150px;
+    height: 300px;
     object-fit: cover;
     border-radius: 10px;
     border: 1px solid rgb(214, 200, 188);
     transition: transform 0.2s;
+    cursor: pointer;
 }
 
 .album-thumb:hover {
     transform: scale(1.05);
 }
 
+.album-thumb-placeholder {
+    width: 100%;
+    height: 300px;
+    background-color: #f4eadf;
+    border-radius: 10px;
+}
+
 .fullscreen-img {
-    max-width: 90vw;
-    max-height: 80vh;
-    object-fit: contain;
+    align-self: center;
+    justify-self: center;
+    object-fit: none;
 }
 
 /* Album Delete Button */
@@ -339,7 +469,7 @@ main {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background-color: #ff4444;
+    background-color: #ec7272;
     color: white;
     border: none;
     cursor: pointer;
@@ -353,7 +483,7 @@ main {
 
 .album-delete-btn:hover {
     transform: scale(1.1);
-    background-color: #ff0000;
+    background-color: #d06969;
 }
 
 /* Animation Styles */
@@ -415,4 +545,54 @@ main {
 }
 .selected-thumb {
     animation: popIn 0.2s ease-out;
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fef4e9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loading-animation {
+    width: 50px;
+    height: 50px;
+    background-image: url('/images/UI/album-icon.png');  /* Or any other image you want */
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: bounce 1s infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.loading-bar-container {
+    width: 200px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.loading-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #f9a0a3;
+    transition: width 0.3s ease;
+}
+
+.loading-text {
+    color: #666;
+    font-size: 16px;
 }

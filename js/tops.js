@@ -63,7 +63,7 @@ export const topImages = {
         defaultColor: 'cream',
         layeringRules: {
             // List of items that cannot be worn simultaneously with this item
-            incompatibleWith: ['sweater', 'stripe-tank', 'butterfly-tee', 'knit-sweater', 'cape', 'tulle-skirt'] 
+            incompatibleWith: ['sweater', 'stripe-tank', 'butterfly-tee', 'knit-sweater', 'cape', 'tulle-skirt', 'cape'] 
         }
     },
 

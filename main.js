@@ -11,15 +11,24 @@ if (!localStorage.getItem('screenshots')) {
     localStorage.setItem('screenshots', JSON.stringify([]));
 }
 
-// Take screenshot function
+// Capture and save the current outfit as a screenshot
 function takeScreenshot() {
     const DOM = getDOMElements();
     
-    // Temporarily hide the buttons
+    // Get existing screenshots first to check count
+    const screenshots = JSON.parse(localStorage.getItem('screenshots')) || [];
+    const MAX_SCREENSHOTS = 20;
+    
+    if (screenshots.length >= MAX_SCREENSHOTS) {
+        alert('Your album is full! Delete some outfits to make room for new ones.');
+        return;  // Exit the function early
+    }
+    
+    // Temporarily hide UI elements for clean screenshot
     DOM.captureBtn.style.display = 'none';
     DOM.resetButton.style.display = 'none';
     
-    // Temporarily remove animations from clothes
+    // Temporarily remove animations from clothes for clean screenshot
     const clothesImages = DOM.daisyContainer.querySelectorAll('.clothes-img');
     clothesImages.forEach(img => {
         img.style.animation = 'none';
@@ -44,24 +53,26 @@ function takeScreenshot() {
         // Convert canvas to data URL
         const screenshotURL = canvas.toDataURL('image/png');
         
-        // Get existing screenshots
-        const screenshots = JSON.parse(localStorage.getItem('screenshots'));
-        
         // Add new screenshot with timestamp
         screenshots.push({
             id: Date.now(),
             url: screenshotURL
         });
         
-        // Save back to localStorage
-        localStorage.setItem('screenshots', JSON.stringify(screenshots));
-        
-        // Show confirmation to user
-        alert('Outfit saved to album!');
+        try {
+            // Save back to localStorage
+            localStorage.setItem('screenshots', JSON.stringify(screenshots));
+            // Show confirmation to user
+            alert('Outfit saved to album!');
+        } catch (e) {
+            alert('Your album is full! Delete some outfits to make room for new ones :)');
+        }
     });
 }
 
-// Load album function
+// Display saved outfits in the album view
+const MAX_SCREENSHOTS = 20;
+
 function loadAlbum() {
     const DOM = getDOMElements();
     DOM.albumGrid.innerHTML = ''; // Clear existing thumbnails
@@ -69,109 +80,264 @@ function loadAlbum() {
     // Get screenshots from localStorage and ensure it's an array
     const screenshots = JSON.parse(localStorage.getItem('screenshots')) || [];
     
-    // Only proceed with forEach if there are screenshots
-    if (screenshots.length === 0) {
-        // Optional: Add a message when there are no screenshots
-        const emptyMessage = document.createElement('p');
-        emptyMessage.textContent = 'No outfits saved yet!';
-        emptyMessage.style.textAlign = 'center';
-        DOM.albumGrid.appendChild(emptyMessage);
-    } else {
-        screenshots.forEach(screenshot => {
-            const thumbContainer = document.createElement('div');
-            thumbContainer.className = 'album-thumb-container';
+    // Add existing screenshots
+    screenshots.forEach(screenshot => {
+        const thumbContainer = document.createElement('div');
+        thumbContainer.className = 'album-thumb-container';
+        
+        // Create delete button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'album-delete-btn';
+        deleteBtn.innerHTML = '×';
+        deleteBtn.title = 'Delete outfit';
+        
+        // Add delete functionality
+        deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             
-            // Create delete button
-            const deleteBtn = document.createElement('button');
-            deleteBtn.className = 'album-delete-btn';
-            deleteBtn.innerHTML = '×';
-            deleteBtn.title = 'Delete outfit';
+            const confirmDelete = confirm('Are you sure you want to delete this screenshot?');
+            if (!confirmDelete) return;
             
-            // Add delete functionality
-            deleteBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent thumbnail click when clicking delete
-                
-                // Confirm deletion
-                const confirmDelete = confirm('Are you sure you want to delete this screenshot?');
-                if (!confirmDelete) {
-                    return; // Exit if user cancels
-                }
-                
-                // Filter out this screenshot
-                const updatedScreenshots = screenshots.filter(s => s.id !== screenshot.id);
-                
-                // Save back to localStorage
-                localStorage.setItem('screenshots', JSON.stringify(updatedScreenshots));
-                
-                // Remove the thumbnail container from display
-                thumbContainer.remove();
-            });
+            // Filter out this screenshot
+            const updatedScreenshots = screenshots.filter(s => s.id !== screenshot.id);
             
-            const thumb = document.createElement('img');
-            thumb.src = screenshot.url;
-            thumb.className = 'album-thumb';
+            // Save back to localStorage
+            localStorage.setItem('screenshots', JSON.stringify(updatedScreenshots));
             
-            // Add click handler for fullscreen view
-            thumb.addEventListener('click', () => {
-                DOM.fullscreenImg.src = screenshot.url;
-                DOM.fullscreenView.style.display = 'flex';
-            });
+            // Remove the thumbnail container
+            thumbContainer.remove();
             
-            thumbContainer.appendChild(thumb);
-            thumbContainer.appendChild(deleteBtn);
-            DOM.albumGrid.appendChild(thumbContainer);
+            // Update placeholders after deletion
+            updatePlaceholders();
         });
-    }
+        
+        const thumb = document.createElement('img');
+        thumb.src = screenshot.url;
+        thumb.className = 'album-thumb';
+        
+        // Enable fullscreen view on thumbnail click
+        thumb.addEventListener('click', () => {
+            DOM.fullscreenImg.src = screenshot.url;
+            DOM.fullscreenView.style.display = 'flex';
+        });
+        
+        thumbContainer.appendChild(thumb);
+        thumbContainer.appendChild(deleteBtn);
+        DOM.albumGrid.appendChild(thumbContainer);
+    });
+    
+    // Add placeholders for remaining slots
+    updatePlaceholders();
     
     DOM.albumPopup.style.display = 'flex';
 }
 
-// Event Listeners
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize DOM references first
+// Update placeholder thumbnails to show empty slots
+function updatePlaceholders() {
+    const DOM = getDOMElements();
+    
+    // Remove existing placeholders
+    const existingPlaceholders = DOM.albumGrid.querySelectorAll('.placeholder-thumb');
+    existingPlaceholders.forEach(placeholder => placeholder.remove());
+    
+    // Count current screenshots
+    const screenshots = JSON.parse(localStorage.getItem('screenshots')) || [];
+    const remainingSlots = MAX_SCREENSHOTS - screenshots.length;
+    
+    // Add new placeholders
+    for (let i = 0; i < remainingSlots; i++) {
+        const placeholderContainer = document.createElement('div');
+        placeholderContainer.className = 'album-thumb-container';
+        
+        const placeholder = document.createElement('div');
+        placeholder.className = 'album-thumb-placeholder';
+        
+        placeholderContainer.appendChild(placeholder);
+        DOM.albumGrid.appendChild(placeholderContainer);
+    }
+}
+
+// Preload images to ensure smooth gameplay
+function preloadImages(imageList) {
+    return Promise.all(imageList.map(src => {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.onerror = reject;
+            img.src = src;
+        });
+    }));
+}
+
+// Update loading bar progress
+function updateLoadingBar(progress) {
+    const loadingBar = document.querySelector('.loading-bar');
+    loadingBar.style.width = `${progress}%`;
+}
+
+// Load and initialize all game content
+async function loadAllContent() {
+    // Start timing when loading begins
+    const startTime = Date.now();
+    const minimumLoadTime = 5000; // 10 seconds in milliseconds
+    
+    // Collect all image URLs from your image objects
+    const allImages = [];
+    
+    // Add tops images
+    Object.values(topImages).forEach(item => {
+        Object.values(item.colors).forEach(color => {
+            allImages.push(`images/clothes/tops/${color.thumb}`);
+            color.fullSize.forEach(img => {
+                allImages.push(`images/clothes/tops/${img.src}`);
+            });
+        });
+    });
+    
+    // Do the same for other categories...
+    // bottoms, fullBody, shoes, accessories
+    
+    const totalImages = allImages.length;
+    let loadedImages = 0;
+    
+    try {
+        // Load all images
+        await Promise.all(allImages.map(src => {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = () => {
+                    loadedImages++;
+                    updateLoadingBar((loadedImages / totalImages) * 100);
+                    resolve(img);
+                };
+                img.onerror = reject;
+                img.src = src;
+            });
+        }));
+        
+        // Calculate how much time has passed
+        const elapsedTime = Date.now() - startTime;
+        const remainingTime = minimumLoadTime - elapsedTime;
+        
+        // If we haven't reached minimum time, wait the remaining duration
+        if (remainingTime > 0) {
+            await new Promise(resolve => setTimeout(resolve, remainingTime));
+        }
+        
+        // Hide loading screen when done
+        document.querySelector('.loading-screen').style.display = 'none';
+        
+        // Initialize the rest of your app
+        initializeApp();
+    } catch (error) {
+        console.error('Failed to load some images:', error);
+    }
+}
+
+// State variables for background cycling
+let currentBackgroundIndex = 0;
+const backgrounds = [
+    '#fef4e9',  // Cream
+    '#d9c8db',  // Lilac
+    '#e4e6e6',  // Sky blue
+    '#f8c7b8',  // Pale peach
+];
+
+// Cycle through background options
+function cycleBackground() {
+    const DOM = getDOMElements();
+    currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
+    DOM.daisyContainer.style.backgroundColor = backgrounds[currentBackgroundIndex];
+}
+
+// Initialize app after DOM and assets are loaded
+function initializeApp() {
+    console.log('Initializing app...');
     initializeDOMReferences();
     const DOM = getDOMElements();
 
-    // Add event listeners
-    document.getElementById('tops-btn').addEventListener('click', () => {
-        loadTops();
-        updateLockedThumbnails();
+    // Debug log to check DOM elements
+    console.log('DOM Elements:', {
+        captureBtn: !!DOM.captureBtn,
+        resetButton: !!DOM.resetButton,
+        albumButton: !!DOM.albumButton,
+        topsBtn: !!document.getElementById('tops-btn'),
+        bottomsBtn: !!document.getElementById('bottoms-btn'),
+        fullBodyBtn: !!document.getElementById('full-body-btn'),
+        shoesBtn: !!document.getElementById('shoes-btn'),
+        accessoriesBtn: !!document.getElementById('accessories-btn')
     });
-    
-    document.getElementById('bottoms-btn').addEventListener('click', () => {
-        loadBottoms();
-        updateLockedThumbnails();
+
+    // Add click handlers for category buttons
+    const categoryButtons = {
+        'tops-btn': loadTops,
+        'bottoms-btn': loadBottoms,
+        'full-body-btn': loadFullBody,
+        'shoes-btn': loadShoes,
+        'accessories-btn': loadAccessories
+    };
+
+    Object.entries(categoryButtons).forEach(([btnId, loadFunction]) => {
+        const btn = document.getElementById(btnId);
+        if (!btn) {
+            console.error(`Button not found: ${btnId}`);
+            return;  // Skip this iteration if button not found
+        }
+        
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            document.querySelectorAll('.clothes-btn').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Add active class to clicked button
+            btn.classList.add('active')
+            
+            // Clear and load new thumbnails
+            DOM.thumbGrid.innerHTML = '';
+            loadFunction();
+            
+            // Add this line to update locked states after loading new category
+            updateLockedThumbnails();
+        });
     });
-    
-    document.getElementById('full-body-btn').addEventListener('click', () => {
-        loadFullBody();
-        updateLockedThumbnails();
-    });
-    
-    document.getElementById('shoes-btn').addEventListener('click', () => {
-        loadShoes();
-        updateLockedThumbnails();
-    });
-    
-    document.getElementById('accessories-btn').addEventListener('click', () => {
-        loadAccessories();
-        updateLockedThumbnails();
-    });
-    
-    DOM.captureBtn.addEventListener('click', takeScreenshot);
-    DOM.resetButton.addEventListener('click', reset);
-    DOM.albumButton.addEventListener('click', loadAlbum);
+
+    // Add other event listeners with checks
+    if (!DOM.captureBtn) console.error('Capture button not found');
+    if (!DOM.resetButton) console.error('Reset button not found');
+    if (!DOM.albumButton) console.error('Album button not found');
+
+    if (DOM.captureBtn) {
+        DOM.captureBtn.addEventListener('click', takeScreenshot);
+    }
+    if (DOM.resetButton) {
+        DOM.resetButton.addEventListener('click', reset);
+    }
+    if (DOM.albumButton) {
+        DOM.albumButton.addEventListener('click', loadAlbum);
+    }
+
     DOM.albumCloseBtn.addEventListener('click', () => {
         DOM.albumPopup.style.display = 'none';
     });
-    DOM.fullscreenCloseBtn.addEventListener('click', () => {
-        DOM.fullscreenView.style.display = 'none';
-    });
 
-    // Load tops after DOM is ready and elements are initialized
+    // Add background button click handler
+    if (DOM.backgroundBtn) {
+        DOM.backgroundBtn.addEventListener('click', cycleBackground);
+    } else {
+        console.error('Background button not found');
+    }
+
+    // Set initial background
+    DOM.daisyContainer.style.backgroundColor = backgrounds[currentBackgroundIndex];
+
+    // Load initial category
     loadTops();
     updateLockedThumbnails();
-});
+}
+
+// Start loading when the document is ready
+document.addEventListener('DOMContentLoaded', loadAllContent);
 
 // Close popups when clicking outside
 window.addEventListener('click', (e) => {
@@ -179,11 +345,12 @@ window.addEventListener('click', (e) => {
     if (e.target === DOM.albumPopup) {
         DOM.albumPopup.style.display = 'none';
     }
-    if (e.target === DOM.fullscreenView) {
+    if (e.target === DOM.fullscreenImg) {
         DOM.fullscreenView.style.display = 'none';
     }
 });
 
+// Reset all clothing elements and selection states
 function reset() {
     const DOM = getDOMElements();
     // Remove all clothes-img elements from daisy-container
