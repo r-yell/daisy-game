@@ -10,12 +10,11 @@
 /* Typography */
 h1 {
     text-align: center;
-    padding: 20px 0;
+    font-size: 1rem;
 }   
 
 body {
     background-color: #f9a0a3;
-    min-width: 877px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,131 +22,155 @@ body {
 
 /* Layout Containers */
 main {
-    min-width: 857px;
-    min-height: 755px;
-    max-width: 1200px;
-    max-height: 850px;
     margin-inline: auto; /* Modern way to center horizontally */
-    margin: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: px solid #f9a0a3;
-    outline: 20px solid #fef4e9;
-    border-radius: 20px;
-    background-color: #fef4e9;
+    margin-top: 10px;
+    width: 95vw;
+    min-width: 562px;
+    max-width: 1200px;
+    height: 80vh;
+    max-height: 700px;
+}
+
+.all-container {
+    width: 100%;
+    height: 100%;
 }
 
 .border-container {
     border: 1px solid blue;
 }
 
-.all-container {
-    width: 90%;
-    height: 90%
-}
 
 .content-container {
     display: flex;
     width: 100%;
+    height: 100%;
+    align-items: stretch;
+    background-color: white;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
 }
 
 /* Navigation Styles */
 
-.clothes-nav {
+.top-nav-container {
     display: flex;
-    justify-content: flex-end;
-    z-index: 1000;
-    position: relative;
-    padding-right: 25px;
+    justify-content: space-between;
+    min-height: 70px;
 }
 
+.title {
+    background-image: url("/images/UI/title.svg");
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    margin-left: 10px;
+    margin-bottom: 3px;
+    width: 100%;
+    height: auto;
+}
+
+.top-nav-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items:flex-end
+}   
+
+.btm-right-curved-cnr {
+    width: 30px;
+    height: 30px;
+    background-image: url("/images/UI/btm-right-curved-cnr.svg");
+}
+
+.clothes-nav {
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    padding: 0 25px;
+    justify-content: flex-end;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: white;
+    height: 100%;
+    max-height: 100px;
+}
+
+
+
 .clothes-btn {
-    width: 100px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
+    margin: 5px 2px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border-bottom: none;
-    border-left: none;
-    background-size: 50%;
-    position: relative;
+    background-size: 100%;
     background-position-x: center;
-    background-position-y: 70%;
-    opacity: 0.3;
-}
-
-/* Clothes Button Border */
-.clothes-btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("/images/UI/clothes-btn-border.svg");
-    background-size: 100% 100%;
+    background-position-y: center;
+    border-radius: 20px;
+    border: 3pt solid white;
     background-repeat: no-repeat;
-    pointer-events: none;
-    z-index: 1;
 }
 
-.clothes-btn:hover {
-    background-color: #fef4e9;
-    background-size: 70%;
-    opacity: .7;
-}
 
 .clothes-btn:active {
-    background-size: 65%;
+    
 }
 
-.clothes-btn.active  {
-    background-size: 70%;
+
+
+#tops-btn.active, #bottoms-btn.active, #full-body-btn.active, #shoes-btn.active, #accessories-btn.active {
+
+    border: 3pt solid #e9ddd0;
 }
 
 #tops-btn {
-    background-image: url("images/UI/tops-icon.png");
-    background-repeat: no-repeat;
+    background-image: url("/images/UI/tops-icon.png");
     background-color: #c4cd75;
 }
 
-#tops-btn.active, #bottoms-btn.active, #full-body-btn.active, #shoes-btn.active, #accessories-btn.active {
-    /* background-color: #d06969; */
-    opacity: 1;
-}
-
 #bottoms-btn {
-    background-image: url("images/UI/bottoms-icon.png");
-    background-repeat: no-repeat;
-    background-color: #d2b6b3;
+    background-image: url("/images/UI/bottoms-icon.png");
+    background-color: #d06969;
+    background-size: 90%;
+    background-position-y: 45%;
 }
-
 
 #full-body-btn {
-    background-image: url("images/UI/full-body-icon.png");
-    background-repeat: no-repeat;
+    background-image: url("/images/UI/full-body-icon.png");
     background-color: #d0d8df;
 }
 
-
 #shoes-btn {
-    background-image: url("images/UI/shoes-icon.png");
-    background-repeat: no-repeat;
-    background-color: #d06969;
+    background-image: url("/images/UI/shoes-icon.png");
+    background-color: #d1b5b2;
+    background-position-x: 100%
 }
-
 
 #accessories-btn {
-    background-image: url("images/UI/acc-icon.png");
-    background-repeat: no-repeat;
+    background-image: url("/images/UI/acc-icon.png");
     background-color: #ffcd6b;
+    background-size: 90%;
 }
+
 
 .left-nav {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin: 20px 0;
+    height: 100%;
+    background-color: white;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding-top: 20px;
+    margin-left: 10px;
+    border-right: none;
 }
 
 /* Vertical Button Styles */
@@ -158,66 +181,52 @@ main {
 } 
 
 .portrait-btn {
-    width: 80px;
-    height: 100px;
+    width: 40px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     border-bottom: none;
     border-left: none;
-    background-size: 70%;
     position: relative;
-    background-position-x: 70%;
+    background-position-x: center;
     background-position-y: center;
+    border-radius: 10px;
+    margin: 5px 0;
 }
-
-.portrait-btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("/images/UI/portrait-btn-border.svg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    pointer-events: none;
-    z-index: 1;
-}
-
 
 #background-btn {
     background-image: url("/images/UI/background-icon.png");
     background-repeat: no-repeat;
     background-color: #d0d8df;
+    background-size: 100%;
 }
 
 #album-btn {
     background-image: url("/images/UI/album-icon.png");
     background-repeat: no-repeat;
     background-color: #d0d8df;
+    background-size: 90%;
 }
 
 /* Main Content Area */
 
 .daisy-container {
-    min-width: 250px;
-    max-width: 333px;
     position: relative;
     overflow: hidden;
     align-content: center;
-    flex: 1;
+    flex: 2;
+    width: 100%;
+    height: 100%;
+    max-width: 450px;
+    min-width: 200px;
+    border-radius: 30px;
 }
 
-.daisy-container, .thumb-grid-container, .left-nav {
-    min-height: 550px;
-    max-height: 667px;
-}
-
-.daisy-container, .thumb-grid-container {
-    min-height: 550px;
-    max-height: 667px;
+ .daisy-container, .thumb-grid-container {
     border: 10px solid white;
 }
-
 
 /* Character and Clothing Images */
 .daisy-img {
@@ -230,8 +239,10 @@ main {
 
 .daisy-img, 
 .clothes-img {
-    height: 100%;
+    height: auto;
+    max-height: 100%;
     width: auto;
+    max-width: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -242,17 +253,17 @@ main {
 .capture-btn,
 .reset-btn {
     position: absolute;
-    /* border: 2px solid white; */
+    min-width: 45px;
+    min-height: 45px;
     padding: 18px;
     border-radius: 15px;
     z-index: 1000;
     bottom: 10px;
+    border: 2px solid #fef4e9;
 }
 
 .capture-btn {
     left: 10px;
-    width: 80px;
-    height: 70px;
     cursor: pointer;
     background-image: url("/images/UI/camera-icon.png");
     background-repeat: no-repeat;
@@ -263,8 +274,7 @@ main {
 
 .reset-btn {
     right: 10px;
-    width: 70px;
-    height: 70px;
+    max-width: 70px;
     cursor: pointer;
     background-image: url("/images/UI/reset-icon.png");
     background-repeat: no-repeat;
@@ -273,12 +283,15 @@ main {
     background-color: #d0d8df;
 }
 
+
 /* Preview Section */
 .thumb-grid-container {
     display: flex;
     flex: 2;
     align-items: center;
     overflow: scroll;
+    background-color: #fef4e9;
+    border-radius: 30px;
 }
 
 /* Clothes Grid Layout */
@@ -286,16 +299,15 @@ main {
     display: grid;
     column-gap: 20px;
     row-gap: 10px;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     grid-auto-flow: column;
     padding: 20px;
-    min-width: 720px;
+    max-width: 5rem;
 }
 
 /* Thumbnail Styles */
 .thumb-container {
-    width: 150px;
+    width: 10rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -332,8 +344,6 @@ main {
     position: absolute;
     top: 50px;
     right: 25%;
-    width: 70px;
-    height: 70px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 21.9 21.9'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:none;stroke:%23f9a0a3;stroke-miterlimit:10;stroke-width:2px;%7D%3C/style%3E%3C/defs%3E%3Cg%3E%3Cg id='Layer_1'%3E%3Ccircle class='cls-1' cx='10.9' cy='10.9' r='9.4'/%3E%3Cline class='cls-1' x1='4.3' y1='17.6' x2='17.6' y2='4.3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
@@ -379,11 +389,13 @@ main {
 }
 
 .album-content {
+    width: 90vw;
+    height: 75vh;
     background-color: #fef4e9;
     position: relative;
-    width: 1100px;
-    height: 700px;
     overflow-y: auto;
+    border: 20px solid white;
+    border-radius: 30px;
 }
 
 .fullscreen-content {
@@ -400,13 +412,24 @@ main {
     object-fit: contain;
 }
 
+.album-title-container {
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+    padding: 10px 20px;
+    /* background-color: #fef4e9; */
+    top: 0;
+    z-index: 2002;
+}
+
 .album-close-btn {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    font-size: 24px;
-    background: none;
     border: none;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
 }
 
@@ -414,18 +437,13 @@ main {
     font-size: 24px;
     font-weight: bold;
     text-align: center;
-    padding: 20px 0;
-    background-color: #fef4e9;
-    position: sticky;
-    top: 0;
-    z-index: 2002;
 }
 
 /* Album Grid Layout */
 .album-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     gap: 1rem;
     padding: 70px;
 }
@@ -458,7 +476,7 @@ main {
 .fullscreen-img {
     align-self: center;
     justify-self: center;
-    object-fit: none;
+    object-fit: contain;
 }
 
 /* Album Delete Button */
@@ -516,8 +534,6 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 100%;
-    width: auto;
 }
 
 .pop-in-animation {
@@ -559,30 +575,99 @@ main {
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    opacity: 1;
+    transition: opacity .2s ease-out;
+}
+
+.loading-screen.fade-out {
+    opacity: 0;
 }
 
 .loading-animation {
-    width: 50px;
-    height: 50px;
-    background-image: url('/images/UI/album-icon.png');  /* Or any other image you want */
-    background-size: contain;
-    background-repeat: no-repeat;
-    animation: bounce 1s infinite;
-    margin-bottom: 20px;
+    position: relative;
+    width: 460px;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 30px;  
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+.loading-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: 100%;
+    object-fit: contain;
 }
+
+#loading-flowers {
+    animation: flowers-move 10s linear 1;
+}
+
+#loading-grass {
+    animation: grass-move 10s linear 1;
+}
+
+#loading-cloud-big {
+    animation: cloud-big-move 10s linear 1;
+}
+
+#loading-cloud-med {
+    animation: cloud-med-move 10s linear 1;
+}
+
+#loading-cloud-small {
+    animation: cloud-small-move 10s linear 1;
+}
+
+#loading-daisy-logo {
+    width: 80%;
+    animation: fade-in 4s ease-out 1;
+}
+
+@keyframes flowers-move {
+    0% { transform: translate(-70%, -50%); }
+    100% { transform: translate(-50%, -50%); }
+}
+
+@keyframes grass-move {
+    0% { transform: translate(-60%, -50%); }
+    100% { transform: translate(-50%, -50%); }
+}
+
+@keyframes cloud-big-move {
+    0% { transform: translate(-58%, -50%); }
+    100% { transform: translate(-50%, -50%); }
+}
+
+@keyframes cloud-med-move {
+    0% { transform: translate(-63%, -50%); }
+    100% { transform: translate(-50%, -50%); }
+}
+
+@keyframes cloud-small-move {
+    0% { transform: translate(-55%, -50%); }
+    100% { transform: translate(-50%, -50%); }
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+
+
+
 
 .loading-bar-container {
-    width: 200px;
-    height: 20px;
+    width: 400px;
+    height: 3px;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    background-size: contain;
     overflow: hidden;
-    margin-bottom: 10px;
 }
 
 .loading-bar {
@@ -593,6 +678,77 @@ main {
 }
 
 .loading-text {
-    color: #666;
-    font-size: 16px;
+    color: #d06969;
+    font-size: 14px;
+}
+
+
+@media (min-height: 450px) {
+    .thumb-container {
+        width: 14rem;
+    }
+
+    .top-nav-container {
+        height: 80px;
+    }
+
+    .clothes-btn {
+        height: 60px;
+        width: 60px;
+        border-radius: 30px;
+        margin: 0 8px;
+    }
+}
+
+@media (min-height: 620px) {
+
+    .loading-animation {
+        width: 600px;
+        height: 460px;
+    }
+
+    .loading-bar-container {
+        width: 500px;
+    }
+
+
+    .portrait-btn {
+        height: 70px;
+        width: 60px;
+    }
+
+    .capture-btn, .reset-btn {
+        width: 70px;
+        height: 70px;
+    }
+
+    .clothes-btn {
+        height: 70px;
+        width: 70px;
+        border-radius: 45px;
+    }
+
+    .thumb-grid {
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .thumb-container {
+        width: 10rem;
+    }
+}
+
+@media (min-height: 740px) {
+    .thumb-container {
+        width: 12rem;
+    }
+
+    .top-nav-container {
+        height: 130px;
+    }
+}
+
+@media(max-width: 780px) {
+    .title {
+        background-image: url("/images/UI/title-sml.svg");
+    }
 }

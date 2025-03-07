@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="tops-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 37.6 37.6">
+  <!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+        stroke: #a6a099;
+        stroke-linejoin: round;
+        stroke-width: 1.3px;
+      }
+
+      .st1 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="18.8" y1=".05" x2="18.8" y2="34.49" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fef4e9"/>
+      <stop offset=".75" stop-color="#e3dad0"/>
+      <stop offset=".99" stop-color="#fef4e9"/>
+    </linearGradient>
+  </defs>
+  <rect id="gradient" class="st1" x="0" width="37.6" height="37.6"/>
+  <g id="tops-linework">
+    <path class="st0" d="M18.8,30.67c-5.04,0-9.07-2.52-11.71-5.53l5.68-11.03"/>
+    <path class="st0" d="M27.47,19.24c2.76-1.37,5.02-4.86,5.02-4.86l-9.21-7.45c-.38.55-1.36,2.81-4.48,2.81s-4.1-2.27-4.48-2.81l-9.21,7.45s2.26,3.5,5.02,4.86"/>
+    <path class="st0" d="M18.8,30.67c5.04,0,9.07-2.52,11.71-5.53l-5.68-11.03"/>
+    <path class="st0" d="M23.28,6.93c-1.49.67-2.21,1.18-4.48,1.18s-2.99-.51-4.48-1.18"/>
+  </g>
+</svg>

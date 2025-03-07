@@ -179,7 +179,7 @@ function updateLoadingBar(progress) {
 async function loadAllContent() {
     // Start timing when loading begins
     const startTime = Date.now();
-    const minimumLoadTime = 5000; // 10 seconds in milliseconds
+    const minimumLoadTime = 9000; // 10 seconds in milliseconds
     
     // Collect all image URLs from your image objects
     const allImages = [];
@@ -193,6 +193,38 @@ async function loadAllContent() {
             });
         });
     });
+
+    // Add bottoms images
+    Object.values(bottomImages).forEach(item => {
+        Object.values(item.colors).forEach(color => {
+            allImages.push(`images/clothes/bottoms/${color.thumb}`);
+        });
+    });
+
+    // Add full body images
+    Object.values(fullBodyImages).forEach(item => {
+        Object.values(item.colors).forEach(color => {
+            allImages.push(`images/clothes/full-body/${color.thumb}`);
+        });
+    });
+
+    // Add shoes images
+    Object.values(shoeImages).forEach(item => {
+        Object.values(item.colors).forEach(color => {
+            allImages.push(`images/clothes/shoes/${color.thumb}`);
+        });
+    });
+
+    // Add accessories images
+    Object.values(accessoryImages).forEach(item => {
+        Object.values(item.colors).forEach(color => {
+            allImages.push(`images/clothes/acc/${color.thumb}`);
+        });
+    });
+    
+    
+    
+    
     
     // Do the same for other categories...
     // bottoms, fullBody, shoes, accessories
@@ -225,7 +257,7 @@ async function loadAllContent() {
         }
         
         // Hide loading screen when done
-        document.querySelector('.loading-screen').style.display = 'none';
+        hideLoadingScreen();
         
         // Initialize the rest of your app
         initializeApp();
@@ -369,5 +401,15 @@ function reset() {
     document.querySelectorAll('.locked-color-btn').forEach(btn => {
         btn.classList.remove('locked-color-btn');
     });
+}
+
+function hideLoadingScreen() {
+    const loadingScreen = document.querySelector('.loading-screen');
+    loadingScreen.classList.add('fade-out');
+    
+    // Wait for fade animation to complete before removing
+    setTimeout(() => {
+        loadingScreen.style.display = 'none';
+    }, 2000);  // 2000ms = 2s to match the transition duration
 }
 

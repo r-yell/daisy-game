@@ -8,24 +8,36 @@
 </head>
 <body>
     <div class="loading-screen">
-        <div class="loading-animation"></div>
+        <div class="loading-animation">
+          <img src="images/loading/sky.png" alt="Sky" class="loading-img" id="loading-sky">
+          <img src="images/loading/cloud-big.png" alt="Big Cloud" class="loading-img" id="loading-cloud-big">
+          <img src="images/loading/cloud-med.png" alt="Medium Cloud" class="loading-img" id="loading-cloud-med">
+          <img src="images/loading/cloud-small.png" alt="Small Cloud" class="loading-img" id="loading-cloud-small"> 
+          <img src="images/loading/grass.png" alt="Grass" class="loading-img" id="loading-grass">
+          <img src="images/loading/flowers.png" alt="Flowers" class="loading-img" id="loading-flowers">
+          <img src="images/UI/title.svg" alt="Daisy Logo" class="loading-img" id="loading-daisy-logo">
+        </div>
         <div class="loading-bar-container">
             <div class="loading-bar"></div>
         </div>
         <div class="loading-text">Loading...</div>
     </div>
 
-    <h1>Daisy Gets Ready!</h1>
-
     <main>
       <div class="all-container">
-        <nav class="clothes-nav">
-          <div id="tops-btn" class="clothes-btn active"></div>
-          <div id="bottoms-btn" class="clothes-btn"></div>
-          <div id="full-body-btn" class="clothes-btn"></div>
-          <div id="shoes-btn" class="clothes-btn"></div>
-          <div id="accessories-btn" class="clothes-btn"></div>
-        </nav>
+        <div class="top-nav-container">
+          <div class="title"></div>
+          <div class="top-nav-right">
+            <div class="btm-right-curved-cnr"></div>
+            <nav class="clothes-nav">
+              <div id="tops-btn" class="clothes-btn active"></div>
+              <div id="bottoms-btn" class="clothes-btn"></div>
+              <div id="full-body-btn" class="clothes-btn"></div>
+              <div id="shoes-btn" class="clothes-btn"></div>
+              <div id="accessories-btn" class="clothes-btn"></div>
+            </nav>
+          </div>
+        </div>
 
         <div class="content-container">
             <nav class="left-nav">
@@ -61,8 +73,9 @@
 
     <div class="album-popup">
         <div class="album-content">
-            <button class="album-close-btn">&times;</button>
-            <h2 class="album-title">My Outfit Album</h2>
+              <div class="album-title-container"> 
+                <button class="album-close-btn">x</button>
+              </div>
             <div class="album-grid"></div>
         </div>
     </div>
