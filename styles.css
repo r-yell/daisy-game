@@ -65,7 +65,7 @@ main {
 }
 
 .title {
-    background-image: url("daisy-game/images/UI/title.svg");
+    background-image: url("/images/UI/title.svg");
     background-size: contain;
     background-position-x: center;
     background-position-y: center;
@@ -85,7 +85,7 @@ main {
 .btm-right-curved-cnr {
     width: 30px;
     height: 30px;
-    background-image: url("daisy-game/images/UI/btm-right-curved-cnr.svg");
+    background-image: url("/images/UI/btm-right-curved-cnr.svg");
 }
 
 .clothes-nav {
@@ -132,30 +132,30 @@ main {
 }
 
 #tops-btn {
-    background-image: url("daisy-game/images/UI/tops-icon.png");
+    background-image: url("/images/UI/tops-icon.png");
     background-color: #c4cd75;
 }
 
 #bottoms-btn {
-    background-image: url("daisy-game/images/UI/bottoms-icon.png");
+    background-image: url("/images/UI/bottoms-icon.png");
     background-color: #d06969;
     background-size: 90%;
     background-position-y: 45%;
 }
 
 #full-body-btn {
-    background-image: url("daisy-game/images/UI/full-body-icon.png");
+    background-image: url("/images/UI/full-body-icon.png");
     background-color: #d0d8df;
 }
 
 #shoes-btn {
-    background-image: url("daisy-game/images/UI/shoes-icon.png");
+    background-image: url("/images/UI/shoes-icon.png");
     background-color: #d1b5b2;
     background-position-x: 100%
 }
 
 #accessories-btn {
-    background-image: url("daisy-game/images/UI/acc-icon.png");
+    background-image: url("/images/UI/acc-icon.png");
     background-color: #ffcd6b;
     background-size: 90%;
 }
@@ -197,14 +197,14 @@ main {
 }
 
 #background-btn {
-    background-image: url("daisy-game/images/UI/background-icon.png");
+    background-image: url("/images/UI/background-icon.png");
     background-repeat: no-repeat;
     background-color: #d0d8df;
     background-size: 100%;
 }
 
 #album-btn {
-    background-image: url("daisy-game/images/UI/album-icon.png");
+    background-image: url("/images/UI/album-icon.png");
     background-repeat: no-repeat;
     background-color: #d0d8df;
     background-size: 90%;
@@ -265,7 +265,7 @@ main {
 .capture-btn {
     left: 10px;
     cursor: pointer;
-    background-image: url("daisy-game/images/UI/camera-icon.png");
+    background-image: url("/images/UI/camera-icon.png");
     background-repeat: no-repeat;
     background-size: 120%;
     background-position: center;
@@ -276,7 +276,7 @@ main {
     right: 10px;
     max-width: 70px;
     cursor: pointer;
-    background-image: url("daisy-game/images/UI/reset-icon.png");
+    background-image: url("/images/UI/reset-icon.png");
     background-repeat: no-repeat;
     background-size: 80%;
     background-position: center;
@@ -749,6 +749,6 @@ main {
 
 @media(max-width: 780px) {
     .title {
-        background-image: url("daisy-game/images/UI/title-sml.svg");
+        background-image: url("/images/UI/title-sml.svg");
     }
 }
