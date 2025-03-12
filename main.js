@@ -211,18 +211,26 @@ async function loadAllContent() {
         // Wait for all loading images to load
         await Promise.all(loadingPromises);
 
-        // Wait for 5 seconds before starting the animation
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        // Wait for 4 seconds before starting the animation
+        await new Promise(resolve => setTimeout(resolve, 4000));
 
         // Start the loading animation
-        const loadingElements = document.querySelectorAll('.loading-img');
+        const loadingElements = document.querySelectorAll('.loading-img:not(#loading-daisy-logo)');
         loadingElements.forEach(el => {
             el.style.opacity = '1';
             el.style.animationPlayState = 'running';
         });
 
-        // Minimum display time for loading screen (10 seconds)
-        await new Promise(resolve => setTimeout(resolve, 8000));
+        // Wait 4 more seconds before showing the logo
+        await new Promise(resolve => setTimeout(resolve, 4000));
+
+        // Show the logo
+        const logo = document.getElementById('loading-daisy-logo');
+        logo.style.opacity = '1';
+        logo.style.animationPlayState = 'running';
+
+        // Minimum display time for loading screen (7 seconds)
+        await new Promise(resolve => setTimeout(resolve, 7000));
 
         // Hide loading screen and initialize game
         hideLoadingScreen();
@@ -446,6 +454,6 @@ function hideLoadingScreen() {
     // Wait for fade animation to complete before removing
     setTimeout(() => {
         loadingScreen.style.display = 'none';
-    }, 2000);  // 2000ms = 2s to match the transition duration
+    }, 4000);  // 4000ms = 4s to match the transition duration
 }
 
