@@ -211,14 +211,18 @@ async function loadAllContent() {
         // Wait for all loading images to load
         await Promise.all(loadingPromises);
 
+        // Wait for 5 seconds before starting the animation
+        await new Promise(resolve => setTimeout(resolve, 5000));
+
         // Start the loading animation
         const loadingElements = document.querySelectorAll('.loading-img');
         loadingElements.forEach(el => {
             el.style.opacity = '1';
+            el.style.animationPlayState = 'running';
         });
 
         // Minimum display time for loading screen (10 seconds)
-        await new Promise(resolve => setTimeout(resolve, 10000));
+        await new Promise(resolve => setTimeout(resolve, 8000));
 
         // Hide loading screen and initialize game
         hideLoadingScreen();

@@ -598,31 +598,38 @@ main {
     width: auto;
     height: 100%;
     object-fit: contain;
+    animation-play-state: paused;
 }
 
 #loading-flowers {
     animation: flowers-move 10s linear 1;
+    animation-play-state: paused;
 }
 
 #loading-grass {
     animation: grass-move 10s linear 1;
+    animation-play-state: paused;
 }
 
 #loading-cloud-big {
     animation: cloud-big-move 10s linear 1;
+    animation-play-state: paused;
 }
 
 #loading-cloud-med {
     animation: cloud-med-move 10s linear 1;
+    animation-play-state: paused;
 }
 
 #loading-cloud-small {
     animation: cloud-small-move 10s linear 1;
+    animation-play-state: paused;
 }
 
 #loading-daisy-logo {
     width: 80%;
     animation: fade-in 4s ease-out 1;
+    animation-play-state: paused;
 }
 
 @keyframes flowers-move {
