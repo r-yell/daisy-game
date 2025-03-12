@@ -177,6 +177,58 @@ function updateLoadingBar(progress) {
 
 // Load and initialize all game content
 async function loadAllContent() {
+    const loadingImages = [
+        'images/loading/sky.png',
+        'images/loading/cloud-big.png',
+        'images/loading/cloud-med.png',
+        'images/loading/cloud-small.png',
+        'images/loading/grass.png',
+        'images/loading/flowers.png',
+        'images/UI/title.svg',
+    ];
+
+    const loadingBar = document.querySelector('.loading-bar');
+    let loadedCount = 0;
+    const totalImages = loadingImages.length;
+
+    try {
+        // First load all loading images for loading animation
+        const loadingPromises = loadingImages.map(src => {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = () => {
+                    loadedCount++;
+                    // Update loading bar
+                    const progress = (loadedCount / totalImages) * 100;
+                    loadingBar.style.width = `${progress}%`;
+                    resolve(img);
+                };
+                img.onerror = reject;
+                img.src = src;
+            });
+        });
+
+        // Wait for all loading images to load
+        await Promise.all(loadingPromises);
+
+        // Start the loading animation
+        const loadingElements = document.querySelectorAll('.loading-img');
+        loadingElements.forEach(el => {
+            el.style.opacity = '1';
+        });
+
+        // Minimum display time for loading screen (2 seconds)
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        // Hide loading screen and initialize game
+        hideLoadingScreen();
+        initializeApp();
+
+    } catch (error) {
+        console.error('Failed to load some images', error);
+    }
+    
+
     // Start timing when loading begins
     const startTime = Date.now();
     const minimumLoadTime = 9000; // 10 seconds in milliseconds
@@ -223,13 +275,6 @@ async function loadAllContent() {
     });
     
     
-    
-    
-    
-    // Do the same for other categories...
-    // bottoms, fullBody, shoes, accessories
-    
-    const totalImages = allImages.length;
     let loadedImages = 0;
     
     try {
@@ -284,21 +329,8 @@ function cycleBackground() {
 
 // Initialize app after DOM and assets are loaded
 function initializeApp() {
-    console.log('Initializing app...');
     initializeDOMReferences();
     const DOM = getDOMElements();
-
-    // Debug log to check DOM elements
-    console.log('DOM Elements:', {
-        captureBtn: !!DOM.captureBtn,
-        resetButton: !!DOM.resetButton,
-        albumButton: !!DOM.albumButton,
-        topsBtn: !!document.getElementById('tops-btn'),
-        bottomsBtn: !!document.getElementById('bottoms-btn'),
-        fullBodyBtn: !!document.getElementById('full-body-btn'),
-        shoesBtn: !!document.getElementById('shoes-btn'),
-        accessoriesBtn: !!document.getElementById('accessories-btn')
-    });
 
     // Add click handlers for category buttons
     const categoryButtons = {
