@@ -217,8 +217,8 @@ async function loadAllContent() {
             el.style.opacity = '1';
         });
 
-        // Minimum display time for loading screen (2 seconds)
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        // Minimum display time for loading screen (10 seconds)
+        await new Promise(resolve => setTimeout(resolve, 10000));
 
         // Hide loading screen and initialize game
         hideLoadingScreen();
